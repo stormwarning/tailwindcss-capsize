@@ -14,6 +14,7 @@
     "build": "tsdx build",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
+    "release": "yarn build && changeset publish",
     "start": "tsdx watch",
     "test": "tsdx test"
   },
@@ -38,6 +39,7 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@changesets/cli": "2.10.x",
     "@typescript-eslint/eslint-plugin": "3.9.x",
     "@typescript-eslint/parser": "3.9.x",
     "@zazen/eslint-config": "2.0.x",
