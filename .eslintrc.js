@@ -12,6 +12,12 @@ module.exports = {
                 'prettier/@typescript-eslint',
             ],
             parser: '@typescript-eslint/parser',
+            env: {
+                node: true,
+            },
+            rules: {
+                'prefer-const': 'off',
+            },
         },
     ],
 }
