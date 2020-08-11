@@ -4,6 +4,8 @@ import plugin from 'tailwindcss/plugin'
 
 import { makeCssSelectors, getValueAndUnit } from './utils'
 
+// eslint-disable-next-line
+// @ts-ignore
 export default plugin(function ({ addUtilities, theme }) {
     /** @todo Get root font size from plugin config */
 
