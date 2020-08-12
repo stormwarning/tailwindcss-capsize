@@ -1,6 +1,6 @@
 {
   "name": "tailwind-capsize",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "ISC",
   "author": "Jeff Nelson <rustyangel@gmail.com> (http://tidaltheory.co/)",
   "main": "dist/index.js",
