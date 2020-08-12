@@ -1,27 +1,59 @@
-# TSDX Bootstrap
+# tailwind-capsize
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+> A TailwindCSS plugin that generates utility classes for trimming whitespace above and below capital letters using [Capsize](https://github.com/seek-oss/capsize).
 
-## Local Development
+```bash
+$ npm install --save-dev tailwind-capsize
+```
 
-Below is a list of commands you will probably find useful.
+## Configuration
 
-### `npm start` or `yarn start`
+This plugin requires a `fontMetrics` key added to your Tailwind theme. It should be an object with keys matching those in your `fontFamily` definitions, and each key should have an object of the following shape:
 
-Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code's Problems tab.
+```ts
+{
+    ascent: number
+    descent: number
+    lineGap: number
+    unitsPerEm: number
+    capHeight: number
+}
+```
 
-<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+These values can be determined by using the [Capsize demo site](https://seek-oss.github.io/capsize/) or by using [fontkit](https://github.com/foliojs/fontkit) or some other means.
 
-Your library will be rebuilt if you make edits.
+### A full example
 
-### `npm run build` or `yarn build`
+```js
+// tailwind.config.js
+{
+    theme: {
+        fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+        },
+        fontMetrics: {
+            sans: {
+                capHeight: 2048,
+                ascent: 2728,
+                descent: -680,
+                lineGap: 0,
+                unitsPerEm: 2816,
+            },
+        },
+        fontSize: { ... },
+        lineHeight: { ... },
+        ...
+    },
+    plugins: [capsizePlugin()],
+}
+```
 
-Bundles the package to the `dist` folder.
-The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
+The plugin assumes a root font-size of `16px` when converting from rem values. To use a different value, pass it in (without units) to the plugin options.
 
-<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+```js
+capsizePlugin({ rootSize: 12 })
+```
 
-### `npm test` or `yarn test`
+## Usage
 
-Runs the test watcher (Jest) in an interactive mode.
-By default, runs tests related to files changed since the last commit.
+The new `.capsize` utility class should be applied to the *direct parent* element surrounding a text node. This class only provides the neccessary styles for trimming whitespace, utility classes for setting `font-family`, `font-size`, and `line-height` will need to be applied as well.
