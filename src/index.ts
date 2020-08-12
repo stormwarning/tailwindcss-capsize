@@ -46,11 +46,14 @@ export default plugin.withOptions(function (options: PluginOptions) {
         let lineHeight = theme('lineHeight', {}) as Record<string, string>
         let fontSize = theme('fontSize', {}) as Record<string, string>
 
-        let leadings = Object.keys(lineHeight).filter(
-            (leading) =>
-                lineHeight[leading].endsWith('rem') ||
-                lineHeight[leading].endsWith('px'),
-        )
+        // let leadings = Object.values(lineHeight).filter((leading) => {
+        //     if (lineHeight[leading]) {
+        //         return (
+        //             lineHeight[leading].endsWith('rem') ||
+        //             lineHeight[leading].endsWith('px')
+        //         )
+        //     }
+        // })
 
         let utilities = {} as { [property: string]: any }
 
@@ -58,17 +61,27 @@ export default plugin.withOptions(function (options: PluginOptions) {
             let fontConfig = fontMetrics[fontFamily]
 
             Object.keys(fontSize).forEach((sizeName) => {
-                leadings.forEach((leading, leadingIndex) => {
+                Object.keys(lineHeight).forEach((leading) => {
                     let fs = normalizeValue(fontSize[sizeName], rootSize)
-                    let lh = normalizeValue(leadings[leadingIndex], rootSize)
+                    let lh = normalizeValue(lineHeight[leading], rootSize)
 
-                    utilities[
-                        makeCssSelectors(fontFamily, sizeName, leading)
-                    ] = capsize({
+                    let {
+                        '::after': after,
+                        '::before': before,
+                        padding,
+                    } = capsize({
                         fontMetrics: fontConfig,
                         fontSize: fs,
                         leading: lh,
                     })
+
+                    utilities[
+                        makeCssSelectors(fontFamily, sizeName, leading)
+                    ] = {
+                        padding,
+                        '&::before': before,
+                        '&::after': after,
+                    }
                 })
             })
         })
