@@ -38,12 +38,18 @@ export default plugin.withOptions(function (options: PluginOptions) {
     let { rootSize } = options
 
     return function ({ addUtilities, theme }) {
-        let fontMetrics: FontMetrics = theme('fontMetrics', {})
-        let lineHeight = theme('lineHeight', {})
-        let fontSize = theme('fontSize', {})
+        /** @todo Improve these types maybe? */
+        let fontMetrics = theme('fontMetrics', {}) as Record<
+            string,
+            FontMetrics
+        >
+        let lineHeight = theme('lineHeight', {}) as Record<string, string>
+        let fontSize = theme('fontSize', {}) as Record<string, string>
 
-        let remLeadings = Object.keys(lineHeight).filter((leading) =>
-            lineHeight[leading].endsWith('rem'),
+        let leadings = Object.keys(lineHeight).filter(
+            (leading) =>
+                lineHeight[leading].endsWith('rem') ||
+                lineHeight[leading].endsWith('px'),
         )
 
         let utilities = {} as { [property: string]: any }
@@ -52,10 +58,9 @@ export default plugin.withOptions(function (options: PluginOptions) {
             let fontConfig = fontMetrics[fontFamily]
 
             Object.keys(fontSize).forEach((sizeName) => {
-                remLeadings.forEach((leading) => {
-                    /** @todo Strip unit and convert to px */
+                leadings.forEach((leading, leadingIndex) => {
                     let fs = normalizeValue(fontSize[sizeName], rootSize)
-                    let lh = normalizeValue(remLeadings[leading], rootSize)
+                    let lh = normalizeValue(leadings[leadingIndex], rootSize)
 
                     utilities[
                         makeCssSelectors(fontFamily, sizeName, leading)
@@ -79,6 +84,6 @@ export default plugin.withOptions(function (options: PluginOptions) {
         //     backgroundSize: `1px ${gridRowHeightRem}rem`,
         // }
 
-        addUtilities(utilities)
+        addUtilities(utilities, {})
     }
 })
