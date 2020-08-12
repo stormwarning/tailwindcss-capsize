@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "tsdx build",
+    "changeset": "changeset add",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "release": "yarn build && changeset publish",

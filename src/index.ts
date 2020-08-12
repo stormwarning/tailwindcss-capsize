@@ -11,23 +11,23 @@ interface FontMetrics {
     capHeight: number
 }
 
-interface CapsizeStyles {
-    fontSize: string
-    lineHeight: string
-    padding: string
-    '::before': {
-        content: string
-        marginTop: string
-        display: string
-        height: number
-    }
-    '::after': {
-        content: string
-        marginBottom: string
-        display: string
-        height: number
-    }
-}
+// interface CapsizeStyles {
+//     fontSize: string
+//     lineHeight: string
+//     padding: string
+//     '::before': {
+//         content: string
+//         marginTop: string
+//         display: string
+//         height: number
+//     }
+//     '::after': {
+//         content: string
+//         marginBottom: string
+//         display: string
+//         height: number
+//     }
+// }
 
 interface PluginOptions {
     /** The root font-size, in pixels */
