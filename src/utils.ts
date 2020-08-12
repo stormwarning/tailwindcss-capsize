@@ -25,10 +25,10 @@ export function makeCssSelectors(
     leading: string,
 ): string {
     return (
-        `.font-${fontFamily}.text-${sizeName}.leading-${leading}.baseline, ` +
-        `.font-${fontFamily} .text-${sizeName}.leading-${leading}.baseline, ` +
-        `.font-${fontFamily} .text-${sizeName} .leading-${leading}.baseline ,` +
-        `.text-${sizeName} .font-${fontFamily}.leading-${leading}.baseline, ` +
-        `.text-${sizeName} .font-${fontFamily} .leading-${leading}.baseline`
+        `.font-${fontFamily}.text-${sizeName}.leading-${leading}.capsize,` +
+        `.font-${fontFamily} .text-${sizeName}.leading-${leading}.capsize,` +
+        `.font-${fontFamily} .text-${sizeName} .leading-${leading}.capsize,` +
+        `.text-${sizeName} .font-${fontFamily}.leading-${leading}.capsize,` +
+        `.text-${sizeName} .font-${fontFamily} .leading-${leading}.capsize`
     )
 }
