@@ -53,7 +53,7 @@
   "devDependencies": {
     "@changesets/changelog-github": "0.2.7",
     "@changesets/cli": "2.10.x",
-    "@navith/tailwindcss-plugin-author-types": "0.0.4",
+    "@navith/tailwindcss-plugin-author-types": "0.2.0",
     "@types/lodash.merge": "4.6.x",
     "@typescript-eslint/eslint-plugin": "3.9.x",
     "@typescript-eslint/parser": "3.9.x",
