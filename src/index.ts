@@ -29,14 +29,12 @@ interface FontMetrics {
 //     }
 // }
 
-interface PluginOptions {
+export interface PluginOptions {
     /** The root font-size, in pixels */
     rootSize?: number
 }
 
-export default plugin.withOptions(function (options: PluginOptions) {
-    let { rootSize } = options
-
+export default plugin.withOptions(({ rootSize = 16 }: PluginOptions) => {
     return function ({ addUtilities, theme }) {
         /** @todo Improve these types maybe? */
         let fontMetrics = theme('fontMetrics', {}) as Record<
