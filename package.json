@@ -1,6 +1,6 @@
 {
   "name": "tailwind-capsize",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tailwind utility classes for trimming whitespace above & below capital letters using Capsize.",
   "keywords": [
     "tailwindcss",
