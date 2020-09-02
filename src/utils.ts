@@ -1,6 +1,4 @@
-export function normalizeValue(value: string, root?: number): number {
-    if (!root) root = 16
-
+export function normalizeValue(value: string, root: number): number {
     let isPixelValue = value.endsWith('px')
     let isRemValue = value.endsWith('rem')
 

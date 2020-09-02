@@ -1,11 +1,12 @@
 import postcss from 'postcss'
 import tailwindcss from 'tailwindcss'
 import merge from 'lodash.merge'
-import capsizePlugin from '../src'
+import capsizePlugin from '../dist'
+import { PluginOptions } from '../src/index'
 
 const generatePluginCss = async (
     config: Record<string, unknown>,
-    pluginOptions = {},
+    pluginOptions: PluginOptions,
 ) => {
     return postcss(
         tailwindcss(
@@ -69,7 +70,7 @@ expect.extend({
 
 describe('Plugin', () => {
     it('generates utility classes with a default root size', () => {
-        return generatePluginCss({}).then((css) => {
+        return generatePluginCss({}, {}).then((css) => {
             // eslint-disable-next-line
             // @ts-ignore
             expect(css).toMatchCss(`
@@ -193,6 +194,134 @@ describe('Plugin', () => {
                     height: 0;
                 }
             `)
+        })
+    })
+
+    it('generates utility classes with a custom root size', () => {
+        return generatePluginCss({}, { rootSize: 12 }).then((css) => {
+            // eslint-disable-next-line
+            // @ts-ignore
+            expect(css).toMatchCss(`
+                    .font-sans.text-sm.leading-sm.capsize,
+                    .font-sans .text-sm.leading-sm.capsize,
+                    .font-sans .text-sm .leading-sm.capsize,
+                    .text-sm .font-sans.leading-sm.capsize,
+                    .text-sm .font-sans .leading-sm.capsize {
+                        padding: 0.05px 0;
+                    }
+
+                    .font-sans.text-sm.leading-sm.capsize::before,
+                    .font-sans .text-sm.leading-sm.capsize::before,
+                    .font-sans .text-sm .leading-sm.capsize::before,
+                    .text-sm .font-sans.leading-sm.capsize::before,
+                    .text-sm .font-sans .leading-sm.capsize::before {
+                        content: '';
+                        margin-top: -0.3542em;
+                        display: block;
+                        height: 0;
+                    }
+
+                    .font-sans.text-sm.leading-sm.capsize::after,
+                    .font-sans .text-sm.leading-sm.capsize::after,
+                    .font-sans .text-sm .leading-sm.capsize::after,
+                    .text-sm .font-sans.leading-sm.capsize::after,
+                    .text-sm .font-sans .leading-sm.capsize::after {
+                        content: '';
+                        margin-bottom: -0.3542em;
+                        display: block;
+                        height: 0;
+                    }
+
+                    .font-sans.text-sm.leading-md.capsize,
+                    .font-sans .text-sm.leading-md.capsize,
+                    .font-sans .text-sm .leading-md.capsize,
+                    .text-sm .font-sans.leading-md.capsize,
+                    .text-sm .font-sans .leading-md.capsize {
+                        padding: 0.05px 0;
+                    }
+
+                    .font-sans.text-sm.leading-md.capsize::before,
+                    .font-sans .text-sm.leading-md.capsize::before,
+                    .font-sans .text-sm .leading-md.capsize::before,
+                    .text-sm .font-sans.leading-md.capsize::before,
+                    .text-sm .font-sans .leading-md.capsize::before {
+                        content: '';
+                        margin-top: -0.7114em;
+                        display: block;
+                        height: 0;
+                    }
+
+                    .font-sans.text-sm.leading-md.capsize::after,
+                    .font-sans .text-sm.leading-md.capsize::after,
+                    .font-sans .text-sm .leading-md.capsize::after,
+                    .text-sm .font-sans.leading-md.capsize::after,
+                    .text-sm .font-sans .leading-md.capsize::after {
+                        content: '';
+                        margin-bottom: -0.7114em;
+                        display: block;
+                        height: 0;
+                    }
+
+                    .font-sans.text-md.leading-sm.capsize,
+                    .font-sans .text-md.leading-sm.capsize,
+                    .font-sans .text-md .leading-sm.capsize,
+                    .text-md .font-sans.leading-sm.capsize,
+                    .text-md .font-sans .leading-sm.capsize {
+                        padding: 0.05px 0;
+                    }
+
+                    .font-sans.text-md.leading-sm.capsize::before,
+                    .font-sans .text-md.leading-sm.capsize::before,
+                    .font-sans .text-md .leading-sm.capsize::before,
+                    .text-md .font-sans.leading-sm.capsize::before,
+                    .text-md .font-sans .leading-sm.capsize::before {
+                        content: '';
+                        margin-top: -0.1947em;
+                        display: block;
+                        height: 0;
+                    }
+
+                    .font-sans.text-md.leading-sm.capsize::after,
+                    .font-sans .text-md.leading-sm.capsize::after,
+                    .font-sans .text-md .leading-sm.capsize::after,
+                    .text-md .font-sans.leading-sm.capsize::after,
+                    .text-md .font-sans .leading-sm.capsize::after {
+                        content: '';
+                        margin-bottom: -0.1947em;
+                        display: block;
+                        height: 0;
+                    }
+
+                    .font-sans.text-md.leading-md.capsize,
+                    .font-sans .text-md.leading-md.capsize,
+                    .font-sans .text-md .leading-md.capsize,
+                    .text-md .font-sans.leading-md.capsize,
+                    .text-md .font-sans .leading-md.capsize {
+                        padding: 0.05px 0;
+                    }
+
+                    .font-sans.text-md.leading-md.capsize::before,
+                    .font-sans .text-md.leading-md.capsize::before,
+                    .font-sans .text-md .leading-md.capsize::before,
+                    .text-md .font-sans.leading-md.capsize::before,
+                    .text-md .font-sans .leading-md.capsize::before {
+                        content: '';
+                        margin-top: -0.4725em;
+                        display: block;
+                        height: 0;
+                    }
+
+                    .font-sans.text-md.leading-md.capsize::after,
+                    .font-sans .text-md.leading-md.capsize::after,
+                    .font-sans .text-md .leading-md.capsize::after,
+                    .text-md .font-sans.leading-md.capsize::after,
+                    .text-md .font-sans .leading-md.capsize::after {
+                        content: '';
+                        margin-bottom: -0.4725em;
+                        display: block;
+                        height: 0;
+                    }
+                `)
         })
     })
 })
