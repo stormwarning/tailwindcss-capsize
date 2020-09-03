@@ -1,8 +1,9 @@
+import merge from 'lodash.merge'
 import postcss from 'postcss'
 import tailwindcss from 'tailwindcss'
-import merge from 'lodash.merge'
+
 import capsizePlugin from '../dist'
-import { PluginOptions } from '../src/index'
+import { PluginOptions } from '../src/types'
 
 const generatePluginCss = async (
     config: Record<string, unknown>,

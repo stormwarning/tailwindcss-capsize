@@ -2,6 +2,7 @@ import capsize from 'capsize'
 import plugin from 'tailwindcss/plugin'
 
 import { makeCssSelectors, normalizeValue } from './utils'
+import { PluginOptions } from 'types'
 
 interface FontMetrics {
     ascent: number
@@ -9,29 +10,6 @@ interface FontMetrics {
     lineGap: number
     unitsPerEm: number
     capHeight: number
-}
-
-// interface CapsizeStyles {
-//     fontSize: string
-//     lineHeight: string
-//     padding: string
-//     '::before': {
-//         content: string
-//         marginTop: string
-//         display: string
-//         height: number
-//     }
-//     '::after': {
-//         content: string
-//         marginBottom: string
-//         display: string
-//         height: number
-//     }
-// }
-
-export interface PluginOptions {
-    /** The root font-size, in pixels */
-    rootSize?: number
 }
 
 export default plugin.withOptions(({ rootSize = 16 }: PluginOptions) => {
@@ -83,17 +61,6 @@ export default plugin.withOptions(({ rootSize = 16 }: PluginOptions) => {
                 })
             })
         })
-
-        // utilities['.baseline-debug-stripe'] = {
-        //     background: `repeating-linear-gradient(0, #68d391,#68d391 ${gridRowHeightRem}rem, #c6f6d5 ${gridRowHeightRem}rem, #c6f6d5 ${
-        //         2 * gridRowHeightRem
-        //     }rem)`,
-        // }
-        // utilities['.baseline-debug-line'] = {
-        //     background:
-        //         'linear-gradient(rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.15) 1px, transparent 1px)',
-        //     backgroundSize: `1px ${gridRowHeightRem}rem`,
-        // }
 
         addUtilities(utilities, {})
     }

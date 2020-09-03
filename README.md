@@ -46,14 +46,14 @@ module.exports = {
         lineHeight: { ... },
         ...
     },
-    plugins: [require('tailwind-capsize')()],
+    plugins: [require('tailwind-capsize')],
 }
 ```
 
 The plugin assumes a root font-size of `16px` when converting from rem values. To use a different value, pass it in (without units) to the plugin options.
 
 ```js
-require('tailwind-capsize')({ rootSize: 12 })
+require('tailwind-capsize').default({ rootSize: 12 })
 ```
 
 ## Usage
