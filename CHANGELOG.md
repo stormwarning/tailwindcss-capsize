@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.3
+
+### Patch Changes
+
+- [`bc1372f`](https://github.com/stormwarning/tailwind-capsize/commit/bc1372f8a6b96a0b19d2ce48dcbda598a715c25c) Thanks [@stormwarning](https://github.com/stormwarning)! - Clean out unused code and fix up docs examples
+
 ### 1.0.2 — 2020-09-01
 
 #### 🐛 Fixed
