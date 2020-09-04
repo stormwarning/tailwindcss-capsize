@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- [`eac9127`](https://github.com/stormwarning/tailwindcss-capsize/commit/eac91277f979ef4233790deedb76cf3ac9b8a9c1) Thanks [@stormwarning](https://github.com/stormwarning)! - Rename plugin using common prefix convention \
+  `tailwind-capsize` → `tailwindcss-capsize`
+
 ## 1.0.3
 
 #### ♻️ Changed
