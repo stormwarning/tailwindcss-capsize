@@ -1,11 +1,11 @@
-# tailwind-capsize
+# tailwindcss-capsize
 
 [![npm version][npm-img]][npm-url]
 
 > A TailwindCSS plugin that generates utility classes for trimming whitespace above and below capital letters using [Capsize](https://github.com/seek-oss/capsize).
 
 ```bash
-$ npm install --save-dev tailwind-capsize
+$ npm install --save-dev tailwindcss-capsize
 ```
 
 ## Configuration
@@ -46,20 +46,20 @@ module.exports = {
         lineHeight: { ... },
         ...
     },
-    plugins: [require('tailwind-capsize')],
+    plugins: [require('tailwindcss-capsize')],
 }
 ```
 
 The plugin assumes a root font-size of `16px` when converting from rem values. To use a different value, pass it in (without units) to the plugin options.
 
 ```js
-require('tailwind-capsize').default({ rootSize: 12 })
+require('tailwindcss-capsize').default({ rootSize: 12 })
 ```
 
 ## Usage
 
 The new `.capsize` utility class should be applied to the *direct parent* element surrounding a text node. This class only provides the neccessary styles for trimming whitespace, utility classes for setting `font-family`, `font-size`, and `line-height` will need to be applied as well.
 
-[npm-url]: https://www.npmjs.com/package/tailwind-capsize
+[npm-url]: https://www.npmjs.com/package/tailwindcss-capsize
 
-[npm-img]: https://img.shields.io/npm/v/tailwind-capsize.svg?style=flat-square
+[npm-img]: https://img.shields.io/npm/v/tailwindcss-capsize.svg?style=flat-square

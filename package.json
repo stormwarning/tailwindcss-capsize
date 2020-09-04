@@ -1,17 +1,18 @@
 {
-  "name": "tailwind-capsize",
+  "name": "tailwindcss-capsize",
   "version": "1.0.3",
-  "description": "Tailwind utility classes for trimming whitespace above & below capital letters using Capsize.",
+  "description": "TailwindCSS utility classes for trimming whitespace above & below capital letters.",
   "keywords": [
     "tailwindcss",
     "tailwindcss-plugin",
     "capsize",
-    "typography"
+    "typography",
+    "whitespace"
   ],
   "license": "ISC",
   "author": "Jeff Nelson <rustyangel@gmail.com> (http://tidaltheory.co/)",
   "main": "dist/index.js",
-  "module": "dist/tailwind-capsize.esm.js",
+  "module": "dist/tailwindcss-capsize.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",

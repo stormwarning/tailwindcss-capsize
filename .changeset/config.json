@@ -4,7 +4,7 @@
   "baseBranch": "trunk",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "stormwarning/tailwind-capsize" }
+    { "repo": "stormwarning/tailwindcss-capsize" }
   ],
   "commit": false,
   "ignore": [],
