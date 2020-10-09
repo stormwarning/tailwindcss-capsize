@@ -3889,6 +3889,11 @@ html-escaper@^2.0.0:
   resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
   integrity sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
 
+html-tags@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
+  integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
+
 http-signature@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/http-signature/-/http-signature-1.2.0.tgz#9aecd925114772f3d95b65a60abb8f7c18fbace1"
@@ -6987,10 +6992,10 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tailwindcss@1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.6.2.tgz#352da9e1b0d9154c95ce12483daa1c2fa1f1eea8"
-  integrity sha512-Cpa0kElG8Sg5sJSvTYi2frmIQZq0w37RLNNrYyy/W6HIWKspqSdTfb9tIN6X1gm4KV5a+TE/n7EKmn5Q9C7EUQ==
+tailwindcss@1.8.12, tailwindcss@^1.7.5:
+  version "1.8.12"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.8.12.tgz#5a33692b5eebd79836210db1449dcbd8d6ea9bd3"
+  integrity sha512-VChYp+4SduP8hHFAmf75P5Yf0qNQi3oSSnpEMKkC6kWW/9K+SizRgbmllqLJLnTZq+eM3TDwvn1jWXvvg+dfDA==
   dependencies:
     "@fullhuman/postcss-purgecss" "^2.1.2"
     autoprefixer "^9.4.5"
@@ -7000,31 +7005,7 @@ tailwindcss@1.6.2:
     color "^3.1.2"
     detective "^5.2.0"
     fs-extra "^8.0.0"
-    lodash "^4.17.15"
-    node-emoji "^1.8.1"
-    normalize.css "^8.0.1"
-    postcss "^7.0.11"
-    postcss-functions "^3.0.0"
-    postcss-js "^2.0.0"
-    postcss-nested "^4.1.1"
-    postcss-selector-parser "^6.0.0"
-    pretty-hrtime "^1.0.3"
-    reduce-css-calc "^2.1.6"
-    resolve "^1.14.2"
-
-tailwindcss@^1.7.5:
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.7.6.tgz#77f294428e399fb570f4bebde2e9bef98456de8a"
-  integrity sha512-focAhU3ciM1/UYBHQVKKzede4zC3y9+IHzU2N/ZF6mbZbhY8S96lOxrO2Y6LMU08+Dbh2xBLmO1bsioLk3Egig==
-  dependencies:
-    "@fullhuman/postcss-purgecss" "^2.1.2"
-    autoprefixer "^9.4.5"
-    browserslist "^4.12.0"
-    bytes "^3.0.0"
-    chalk "^3.0.0 || ^4.0.0"
-    color "^3.1.2"
-    detective "^5.2.0"
-    fs-extra "^8.0.0"
+    html-tags "^3.1.0"
     lodash "^4.17.20"
     node-emoji "^1.8.1"
     normalize.css "^8.0.1"
