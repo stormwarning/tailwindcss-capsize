@@ -61,7 +61,7 @@
     "@zazen/eslint-config": "2.0.x",
     "eslint": "7.7.x",
     "husky": "4.2.x",
-    "lint-staged": "10.2.x",
+    "lint-staged": "10.4.x",
     "lodash.merge": "4.6.x",
     "prettier": "2.0.x",
     "prettier-plugin-packagejson": "2.2.x",
