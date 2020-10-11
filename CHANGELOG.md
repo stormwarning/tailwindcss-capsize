@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.2.0 — 2020-10-11
+
+#### 🎁 Added
+
+- Allow unitless or percentage-based leading values [#34](https://github.com/stormwarning/tailwindcss-capsize/pull/34)  
+  Uses the inherited `font-size` to determine pixel `line-height` value.
+
+#### 🐛 Fixed
+
+- Use correct path for `types` import [#30](https://github.com/stormwarning/tailwindcss-capsize/pull/30)  
+  This should clear up any TypeScript warnings during local builds.
+
 ## 1.1.0 — 2020-09-04
 
 #### 💣 Breaking Changes
