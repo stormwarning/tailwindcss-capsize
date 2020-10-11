@@ -1,8 +1,8 @@
 import capsize from 'capsize'
 import plugin from 'tailwindcss/plugin'
 
-import { makeCssSelectors, normalizeValue } from './utils'
 import { PluginOptions } from './types'
+import { makeCssSelectors, normalizeValue } from './utils'
 
 interface FontMetrics {
     ascent: number
@@ -21,16 +21,6 @@ export default plugin.withOptions(({ rootSize = 16 }: PluginOptions) => {
         >
         let lineHeight = theme('lineHeight', {}) as Record<string, string>
         let fontSize = theme('fontSize', {}) as Record<string, string>
-
-        // let leadings = Object.values(lineHeight).filter((leading) => {
-        //     if (lineHeight[leading]) {
-        //         return (
-        //             lineHeight[leading].endsWith('rem') ||
-        //             lineHeight[leading].endsWith('px')
-        //         )
-        //     }
-        // })
-
         let utilities = {} as { [property: string]: any }
 
         Object.keys(fontMetrics).forEach((fontFamily) => {
@@ -39,7 +29,7 @@ export default plugin.withOptions(({ rootSize = 16 }: PluginOptions) => {
             Object.keys(fontSize).forEach((sizeName) => {
                 Object.keys(lineHeight).forEach((leading) => {
                     let fs = normalizeValue(fontSize[sizeName], rootSize)
-                    let lh = normalizeValue(lineHeight[leading], rootSize)
+                    let lh = normalizeValue(lineHeight[leading], rootSize, fs)
 
                     let {
                         '::after': after,

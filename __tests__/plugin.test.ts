@@ -7,7 +7,7 @@ import { PluginOptions } from '../src/types'
 
 const generatePluginCss = async (
     config: Record<string, unknown>,
-    pluginOptions: PluginOptions
+    pluginOptions: PluginOptions,
 ) => {
     return postcss(
         tailwindcss(
@@ -25,14 +25,6 @@ const generatePluginCss = async (
                                 lineGap: 0,
                                 unitsPerEm: 2816,
                             },
-                        },
-                        fontSize: {
-                            sm: '14px',
-                            md: '1.5rem',
-                        },
-                        lineHeight: {
-                            sm: '20px',
-                            md: '2.5rem',
                         },
                     },
                     corePlugins: false,
@@ -70,8 +62,22 @@ expect.extend({
 })
 
 describe('Plugin', () => {
-    it('generates utility classes with a default root size', () => {
-        return generatePluginCss({}, {}).then((css) => {
+    it('generates utility classes with a default root size', async () => {
+        return generatePluginCss(
+            {
+                theme: {
+                    fontSize: {
+                        sm: '14px',
+                        md: '1.5rem',
+                    },
+                    lineHeight: {
+                        sm: '20px',
+                        md: '2.5rem',
+                    },
+                },
+            },
+            {},
+        ).then((css) => {
             // eslint-disable-next-line
             // @ts-ignore
             expect(css).toMatchCss(`
@@ -198,8 +204,22 @@ describe('Plugin', () => {
         })
     })
 
-    it('generates utility classes with a custom root size', () => {
-        return generatePluginCss({}, { rootSize: 12 }).then((css) => {
+    it('generates utility classes with a custom root size', async () => {
+        return generatePluginCss(
+            {
+                theme: {
+                    fontSize: {
+                        sm: '14px',
+                        md: '1.5rem',
+                    },
+                    lineHeight: {
+                        sm: '20px',
+                        md: '2.5rem',
+                    },
+                },
+            },
+            { rootSize: 12 },
+        ).then((css) => {
             // eslint-disable-next-line
             // @ts-ignore
             expect(css).toMatchCss(`
@@ -323,6 +343,87 @@ describe('Plugin', () => {
                         height: 0;
                     }
                 `)
+        })
+    })
+
+    it('works with unitless or percentage line-height values', async () => {
+        return generatePluginCss(
+            {
+                theme: {
+                    fontSize: {
+                        sm: '1rem',
+                    },
+                    lineHeight: {
+                        sm: '100%',
+                        md: '1.5',
+                    },
+                },
+            },
+            {},
+        ).then((css) => {
+            // eslint-disable-next-line
+            // @ts-ignore
+            expect(css).toMatchCss(`
+            .font-sans.text-sm.leading-sm.capsize,
+            .font-sans .text-sm.leading-sm.capsize,
+            .font-sans .text-sm .leading-sm.capsize,
+            .text-sm .font-sans.leading-sm.capsize,
+            .text-sm .font-sans .leading-sm.capsize {
+                padding: 0.05px 0;
+              }
+
+              .font-sans.text-sm.leading-sm.capsize::before,
+              .font-sans .text-sm.leading-sm.capsize::before,
+              .font-sans .text-sm .leading-sm.capsize::before,
+              .text-sm .font-sans.leading-sm.capsize::before,
+              .text-sm .font-sans .leading-sm.capsize::before {
+                content: '';
+                margin-top: -0.1395em;
+                display: block;
+                height: 0;
+              }
+
+              .font-sans.text-sm.leading-sm.capsize::after,
+              .font-sans .text-sm.leading-sm.capsize::after,
+              .font-sans .text-sm .leading-sm.capsize::after,
+              .text-sm .font-sans.leading-sm.capsize::after,
+              .text-sm .font-sans .leading-sm.capsize::after {
+                content: '';
+                margin-bottom: -0.1395em;
+                display: block;
+                height: 0;
+              }
+
+              .font-sans.text-sm.leading-md.capsize,
+              .font-sans .text-sm.leading-md.capsize,
+              .font-sans .text-sm .leading-md.capsize,
+              .text-sm .font-sans.leading-md.capsize,
+              .text-sm .font-sans .leading-md.capsize {
+                padding: 0.05px 0;
+              }
+
+              .font-sans.text-sm.leading-md.capsize::before,
+              .font-sans .text-sm.leading-md.capsize::before,
+              .font-sans .text-sm .leading-md.capsize::before,
+              .text-sm .font-sans.leading-md.capsize::before,
+              .text-sm .font-sans .leading-md.capsize::before {
+                content: '';
+                margin-top: -0.3895em;
+                display: block;
+                height: 0;
+              }
+
+              .font-sans.text-sm.leading-md.capsize::after,
+              .font-sans .text-sm.leading-md.capsize::after,
+              .font-sans .text-sm .leading-md.capsize::after,
+              .text-sm .font-sans.leading-md.capsize::after,
+              .text-sm .font-sans .leading-md.capsize::after {
+                content: '';
+                margin-bottom: -0.3895em;
+                display: block;
+                height: 0;
+              }
+            `)
         })
     })
 })
