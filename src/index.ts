@@ -2,7 +2,7 @@ import capsize from 'capsize'
 import plugin from 'tailwindcss/plugin'
 
 import { makeCssSelectors, normalizeValue } from './utils'
-import { PluginOptions } from 'types'
+import { PluginOptions } from './types'
 
 interface FontMetrics {
     ascent: number
