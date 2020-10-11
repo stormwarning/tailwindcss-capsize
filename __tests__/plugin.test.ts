@@ -7,7 +7,7 @@ import { PluginOptions } from '../src/types'
 
 const generatePluginCss = async (
     config: Record<string, unknown>,
-    pluginOptions: PluginOptions,
+    pluginOptions: PluginOptions
 ) => {
     return postcss(
         tailwindcss(
