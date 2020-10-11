@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.2.0
+
+### Minor Changes
+
+- [`b9db363`](https://github.com/stormwarning/tailwindcss-capsize/commit/b9db363ddc2efbe2bc2167297f984edbedabca1a) [#34](https://github.com/stormwarning/tailwindcss-capsize/pull/34) Thanks [@stormwarning](https://github.com/stormwarning)! - Allow unitless or percentage-based leading values
+  Uses the inherited `font-size` to determine pixel `line-height` value.
+
+### Patch Changes
+
+- [`2fe2728`](https://github.com/stormwarning/tailwindcss-capsize/commit/2fe27288956795c4ad503da7caf3bf9cea73454a) [#30](https://github.com/stormwarning/tailwindcss-capsize/pull/30) Thanks [@stormwarning](https://github.com/stormwarning)! - Use correct path for `types` import
+  This should clear up any TypeScript warnings during local builds.
+
 ## 1.1.0 — 2020-09-04
 
 #### 💣 Breaking Changes
