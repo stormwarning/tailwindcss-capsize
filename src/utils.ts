@@ -1,9 +1,21 @@
-export function normalizeValue(value: string, root: number): number {
-    let isPixelValue = value.endsWith('px')
-    let isRemValue = value.endsWith('rem')
+export function normalizeValue(
+    value: string,
+    root: number,
+    fs?: number,
+): number {
+    if (value.endsWith('px')) return parseInt(value.replace('px', ''))
+    if (value.endsWith('rem'))
+        return root * parseFloat(value.replace('rem', ''))
 
-    if (isPixelValue) return parseInt(value.replace('px', ''))
-    if (isRemValue) return root * parseFloat(value.replace('rem', ''))
+    let isPercentValue = value.endsWith('%')
+    let isUnitlessValue = /[0-9]$/.test(value)
+
+    if ((isPercentValue || isUnitlessValue) && fs) {
+        let multiplier = isPercentValue
+            ? parseInt(value.replace('%', '')) / 100
+            : parseFloat(value)
+        return fs * multiplier
+    }
 
     return parseInt(value)
 }
