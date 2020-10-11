@@ -12,7 +12,7 @@ const cssRegex = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/
 
 export function getValueAndUnit(value: string): [number, string | undefined] {
     if (typeof value !== 'string') return [value, '']
-    const matchedValue = value.match(cssRegex)
+    let matchedValue = value.match(cssRegex)
     if (matchedValue) return [parseFloat(value), matchedValue[2]]
     return [parseInt(value), undefined]
 }

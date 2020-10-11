@@ -4,8 +4,9 @@ module.exports = {
     rules: {},
     overrides: [
         {
-            files: ['**.ts'],
+            files: ['**/*.ts'],
             extends: [
+                '@zazen/eslint-config',
                 // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/recommended.json
                 'plugin:@typescript-eslint/recommended',
                 // https://github.com/prettier/eslint-config-prettier/blob/master/%40typescript-eslint.js

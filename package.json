@@ -9,6 +9,7 @@
     "typography",
     "whitespace"
   ],
+  "repository": "stormwarning/tailwindcss-capsize",
   "license": "ISC",
   "author": "Jeff Nelson <rustyangel@gmail.com> (http://tidaltheory.co/)",
   "main": "dist/index.js",
@@ -53,19 +54,21 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.2.7",
-    "@changesets/cli": "2.10.x",
-    "@navith/tailwindcss-plugin-author-types": "0.2.0",
+    "@changesets/cli": "2.11.x",
+    "@navith/tailwindcss-plugin-author-types": "1.8.1-0.1",
     "@types/lodash.merge": "4.6.x",
-    "@typescript-eslint/eslint-plugin": "3.9.x",
-    "@typescript-eslint/parser": "3.9.x",
-    "@zazen/eslint-config": "2.0.x",
-    "eslint": "7.10.x",
-    "husky": "4.2.x",
+    "@typescript-eslint/eslint-plugin": "4.4.x",
+    "@typescript-eslint/parser": "4.4.x",
+    "@zazen/eslint-config": "2.1.x",
+    "eslint": "7.11.x",
+    "husky": "4.3.x",
+    "import-sort-style-python": "1.0.x",
     "lint-staged": "10.4.x",
     "lodash.merge": "4.6.x",
-    "prettier": "2.0.x",
+    "prettier": "2.1.x",
+    "prettier-plugin-import-sort": "0.0.5",
     "prettier-plugin-packagejson": "2.2.x",
-    "tsdx": "0.13.3",
+    "tsdx": "0.14.0",
     "tslib": "2.0.x",
     "typescript": "4.0.x"
   },
@@ -74,5 +77,11 @@
   },
   "engines": {
     "node": ">=10"
+  },
+  "importSort": {
+    ".js,.ts": {
+      "parser": "babylon",
+      "style": "python"
+    }
   }
 }
