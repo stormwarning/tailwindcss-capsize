@@ -1,8 +1,12 @@
+type FontSizeValue = [string, Record<'lineHeight', string>]
+
 export function normalizeValue(
-    value: string,
+    value: string | FontSizeValue,
     root: number,
     fs?: number,
 ): number {
+    value = Array.isArray(value) ? value[0] : value
+
     if (value.endsWith('px')) return parseInt(value.replace('px', ''))
     if (value.endsWith('rem'))
         return root * parseFloat(value.replace('rem', ''))
