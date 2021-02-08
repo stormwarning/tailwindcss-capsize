@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.1
+
+### Patch Changes
+
+- [`e18c905`](https://github.com/stormwarning/tailwindcss-capsize/commit/e18c9055f2f5607c6c2d58c96fa0cfb46bb1e1c6) Thanks [@stormwarning](https://github.com/stormwarning)! - Avoid error when normalizeValue gets an array
+
 ## 1.2.0 — 2020-10-11
 
 #### 🎁 Added
