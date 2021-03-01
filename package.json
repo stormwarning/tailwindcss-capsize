@@ -53,14 +53,14 @@
     "tailwindcss": "1.6.2"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "0.2.7",
+    "@changesets/changelog-github": "0.2.8",
     "@changesets/cli": "2.11.x",
     "@navith/tailwindcss-plugin-author-types": "1.8.1-0.1",
     "@types/lodash.merge": "4.6.x",
     "@typescript-eslint/eslint-plugin": "4.4.x",
     "@typescript-eslint/parser": "4.14.x",
     "@zazen/eslint-config": "2.1.x",
-    "eslint": "7.19.x",
+    "eslint": "7.21.x",
     "husky": "4.3.x",
     "import-sort-style-python": "1.0.x",
     "lint-staged": "10.4.x",
