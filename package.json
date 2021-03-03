@@ -61,7 +61,7 @@
     "eslint": "7.21.x",
     "husky": "4.3.x",
     "import-sort-style-python": "1.0.x",
-    "lint-staged": "10.4.x",
+    "lint-staged": "10.5.x",
     "lodash.merge": "4.6.x",
     "prettier": "2.2.x",
     "prettier-plugin-import-sort": "0.0.6",
