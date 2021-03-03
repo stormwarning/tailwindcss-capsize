@@ -1,5 +1,7 @@
 name: CI
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,26 +19,18 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          key: nodeModules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             nodeModules-
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-        env:
-          CI: true
+        run: npm ci
 
       - name: Lint
-        run: yarn lint
-        env:
-          CI: true
+        run: npm run lint
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
-        env:
-          CI: true
+        run: npm test -- --ci --coverage --maxWorkers=2
 
       - name: Build
-        run: yarn build
-        env:
-          CI: true
+        run: npm run build
