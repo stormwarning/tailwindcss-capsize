@@ -1,10 +1,10 @@
 # Change Log
 
-## 1.2.2
+### 1.2.2 — 2021-03-03
 
-### Patch Changes
+#### 🐛 Fixed
 
-- [`be237da`](https://github.com/stormwarning/tailwindcss-capsize/commit/be237daac00375f502611a6b7b1fce1e048e9688) [#68](https://github.com/stormwarning/tailwindcss-capsize/pull/68) Thanks [@stormwarning](https://github.com/stormwarning)! - Fix issue requiring an empty options object to be passed in
+- Fix issue requiring an empty options object to be passed in [#68](https://github.com/stormwarning/tailwindcss-capsize/pull/68)
 
   ```diff
   - require('tailwindcss-capsize')({})
