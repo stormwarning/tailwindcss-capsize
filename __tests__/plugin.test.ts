@@ -7,7 +7,7 @@ import { PluginOptions } from '../src/types'
 
 const generatePluginCss = async (
     config: Record<string, unknown>,
-    pluginOptions: PluginOptions,
+    pluginOptions?: PluginOptions | undefined,
 ) => {
     return postcss(
         tailwindcss(
@@ -76,7 +76,6 @@ describe('Plugin', () => {
                     },
                 },
             },
-            {},
         ).then((css) => {
             // eslint-disable-next-line
             // @ts-ignore
@@ -359,7 +358,6 @@ describe('Plugin', () => {
                     },
                 },
             },
-            {},
         ).then((css) => {
             // eslint-disable-next-line
             // @ts-ignore
