@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-capsize",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "TailwindCSS utility classes for trimming whitespace above & below capital letters.",
   "keywords": [
     "tailwindcss",
