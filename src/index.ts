@@ -12,7 +12,7 @@ interface FontMetrics {
     capHeight: number
 }
 
-export default plugin.withOptions(({ rootSize = 16 }: PluginOptions) => {
+export default plugin.withOptions<PluginOptions | undefined>(({ rootSize = 16 } = {}) => {
     return function ({ addUtilities, theme }) {
         /** @todo Improve these types maybe? */
         let fontMetrics = theme('fontMetrics', {}) as Record<
