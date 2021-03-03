@@ -68,7 +68,7 @@
     "prettier-plugin-packagejson": "2.2.x",
     "tsdx": "0.14.1",
     "tslib": "2.1.x",
-    "typescript": "4.0.x"
+    "typescript": "4.2.x"
   },
   "peerDependencies": {
     "tailwindcss": ">= 1.5"
