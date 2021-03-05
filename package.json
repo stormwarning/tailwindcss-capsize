@@ -13,14 +13,13 @@
   "license": "ISC",
   "author": "Jeff Nelson <rustyangel@gmail.com> (http://tidaltheory.io)",
   "main": "dist/index.js",
-  "module": "dist/tailwindcss-capsize.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "build": "tsdx build",
+    "build": "tsdx build --format cjs",
     "changeset": "changeset add",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -47,14 +46,12 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "capsize": "1.1.0",
-    "tailwindcss": "1.9.6"
+    "capsize": "1.1.0"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.2.8",
     "@changesets/cli": "2.14.x",
     "@navith/tailwindcss-plugin-author-types": "1.8.1-0.1",
-    "@types/lodash.merge": "4.6.x",
     "@typescript-eslint/eslint-plugin": "4.4.x",
     "@typescript-eslint/parser": "4.16.x",
     "@zazen/eslint-config": "2.1.x",
@@ -62,10 +59,10 @@
     "husky": "4.3.x",
     "import-sort-style-python": "1.0.x",
     "lint-staged": "10.5.x",
-    "lodash.merge": "4.6.x",
     "prettier": "2.2.x",
     "prettier-plugin-import-sort": "0.0.6",
     "prettier-plugin-packagejson": "2.2.x",
+    "tailwindcss": "1.9.6",
     "tsdx": "0.14.1",
     "tslib": "2.1.x",
     "typescript": "4.2.x"
