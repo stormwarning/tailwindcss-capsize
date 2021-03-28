@@ -2,11 +2,13 @@
 
 [![npm version][npm-img]][npm-url]
 
-> A TailwindCSS plugin that generates utility classes for trimming whitespace above and below capital letters using [Capsize](https://github.com/seek-oss/capsize).
+> A TailwindCSS plugin that generates leading-trim utility classes using [Capsize](https://github.com/seek-oss/capsize).
 
 ```bash
 $ npm install --save-dev tailwindcss-capsize
 ```
+
+## leading-trim?
 
 ## Configuration
 
@@ -22,7 +24,7 @@ This plugin requires a `fontMetrics` key added to your Tailwind theme. It should
 }
 ```
 
-These values can be determined by using the [Capsize demo site](https://seek-oss.github.io/capsize/) or by using [fontkit](https://github.com/foliojs/fontkit) or some other means.
+These values can be determined by using the [Capsize website](https://seek-oss.github.io/capsize/), by using [fontkit](https://github.com/foliojs/fontkit), or some other means.
 
 ### A full example
 
