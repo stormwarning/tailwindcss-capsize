@@ -49,7 +49,7 @@
     "capsize": "1.1.0"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "0.2.8",
+    "@changesets/changelog-github": "0.4.0",
     "@changesets/cli": "2.14.x",
     "@navith/tailwindcss-plugin-author-types": "1.8.1-0.1",
     "@typescript-eslint/eslint-plugin": "4.4.x",
