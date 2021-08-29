@@ -46,7 +46,7 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "capsize": "1.1.0"
+    "@capsizecss/core": "^3.0.0"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.2.8",
@@ -58,6 +58,7 @@
     "eslint": "7.21.x",
     "husky": "4.3.x",
     "import-sort-style-python": "1.0.x",
+    "jest-diff": "^25.5.0",
     "lint-staged": "10.5.x",
     "prettier": "2.2.x",
     "prettier-plugin-import-sort": "0.0.6",
