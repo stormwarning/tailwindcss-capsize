@@ -1,7 +1,9 @@
 import postcss from 'postcss'
 import tailwindcss from 'tailwindcss'
 
-import capsizePlugin from '../dist'
+// Need to test this how consumers will use it, which is currently (Aug 2021) require.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const capsizePlugin = require('../dist')
 
 const THEME_CONFIG = {
     fontFamily: {
