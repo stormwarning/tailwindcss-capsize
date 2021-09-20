@@ -1,6 +1,6 @@
 import { diffStringsUnified } from 'jest-diff'
 import postcss from 'postcss'
-import prettier from 'prettier'
+import { format } from 'prettier'
 import tailwindcss from 'tailwindcss'
 
 import capsizePlugin from '../dist'
@@ -31,19 +31,15 @@ expect.extend({
                 pass: true,
             }
         } else {
-            let receivedCssFormatted = prettier.format(receivedCss, {
-                parser: 'css',
-            })
-            let expectedCssFormatted = prettier.format(expectedCss, {
-                parser: 'css',
-            })
+            let receivedCssFormatted = format(receivedCss, { parser: 'css' })
+            let expectedCssFormatted = format(expectedCss, { parser: 'css' })
             let diff = diffStringsUnified(
                 receivedCssFormatted,
                 expectedCssFormatted,
             )
-            let message = `expected css to match:\n${diff}`
+
             return {
-                message: () => message,
+                message: () => `expected CSS to match:\n${diff}`,
                 pass: false,
             }
         }
