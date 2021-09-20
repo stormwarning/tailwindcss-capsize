@@ -16,7 +16,7 @@ jobs:
           node-version: 12.x
 
       - name: Use cached node_modules
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: nodeModules-${{ hashFiles('**/package-lock.json') }}
