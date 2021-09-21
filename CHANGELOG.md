@@ -1,19 +1,27 @@
 # Change Log
 
+## 2.1.0 — 2021-09-21
+
+#### 🎁 Added
+
+- Allow custom activation class via new `className` option [#103](https://github.com/stormwarning/tailwindcss-capsize/pull/103)
+
+  ```js
+  require('tailwindcss-capsize')({ className: 'leading-trim' })
+  ```
+
 ## 2.0.0 — 2021-09-21
 
 #### 💣 Breaking Changes
 
-- Use new `@capsize/core` library [#94](https://github.com/stormwarning/tailwindcss-capsize/pull/94)  
-  Thanks [@DylanVann](https://github.com/DylanVann)!  
+- Use new `@capsize/core` library [#94](https://github.com/stormwarning/tailwindcss-capsize/pull/94) Thanks [@DylanVann](https://github.com/DylanVann)!  
   This _will_ change the final output CSS, as the technique to perform
   the leading trim has been simplified. See the [capsize release notes](https://github.com/seek-oss/capsize/releases/tag/capsize%402.0.0)
   for more details.
 
 #### 🐛 Fixed
 
-- Fix usage when `require`ing plugin [#95](https://github.com/stormwarning/tailwindcss-capsize/pull/95)  
-  Thanks [@DylanVann](https://github.com/DylanVann)!
+- Fix usage when `require`ing plugin [#95](https://github.com/stormwarning/tailwindcss-capsize/pull/95) Thanks [@DylanVann](https://github.com/DylanVann)!
 
   ```diff
   - require('tailwindcss-capsize').default
