@@ -37,12 +37,13 @@ export function makeCssSelectors(
     fontFamily: string,
     sizeName: string,
     leading: string,
+    className: string,
 ): string {
     return (
-        `.font-${fontFamily}.text-${sizeName}.leading-${leading}.capsize,` +
-        `.font-${fontFamily} .text-${sizeName}.leading-${leading}.capsize,` +
-        `.font-${fontFamily} .text-${sizeName} .leading-${leading}.capsize,` +
-        `.text-${sizeName} .font-${fontFamily}.leading-${leading}.capsize,` +
-        `.text-${sizeName} .font-${fontFamily} .leading-${leading}.capsize`
+        `.font-${fontFamily}.text-${sizeName}.leading-${leading}.${className},` +
+        `.font-${fontFamily} .text-${sizeName}.leading-${leading}.${className},` +
+        `.font-${fontFamily} .text-${sizeName} .leading-${leading}.${className},` +
+        `.text-${sizeName} .font-${fontFamily}.leading-${leading}.${className},` +
+        `.text-${sizeName} .font-${fontFamily} .leading-${leading}.${className}`
     )
 }

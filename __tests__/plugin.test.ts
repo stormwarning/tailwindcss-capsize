@@ -325,4 +325,48 @@ describe('Plugin', () => {
                 `)
             })
     })
+
+    it('generates utility classes with a custom activation class', async () => {
+        return await postcss(
+            tailwindcss({
+                theme: {
+                    ...THEME_CONFIG,
+                    fontSize: {
+                        sm: '1rem',
+                    },
+                    lineHeight: {
+                        md: '1.5',
+                    },
+                },
+                corePlugins: false,
+                plugins: [capsizePlugin({ className: 'leading-trim' })],
+            }),
+        )
+            .process('@tailwind components; @tailwind utilities', {
+                from: undefined,
+            })
+            .then((result) => {
+                expect(result.css).toMatchCss(`
+                    .font-sans.text-sm.leading-md.leading-trim::before,
+                    .font-sans .text-sm.leading-md.leading-trim::before,
+                    .font-sans .text-sm .leading-md.leading-trim::before,
+                    .text-sm .font-sans.leading-md.leading-trim::before,
+                    .text-sm .font-sans .leading-md.leading-trim::before {
+                        content: '';
+                        margin-bottom: -0.3864em;
+                        display: table;
+                    }
+
+                    .font-sans.text-sm.leading-md.leading-trim::after,
+                    .font-sans .text-sm.leading-md.leading-trim::after,
+                    .font-sans .text-sm .leading-md.leading-trim::after,
+                    .text-sm .font-sans.leading-md.leading-trim::after,
+                    .text-sm .font-sans .leading-md.leading-trim::after {
+                        content: '';
+                        margin-top: -0.3864em;
+                        display: table;
+                    }
+                `)
+            })
+    })
 })
