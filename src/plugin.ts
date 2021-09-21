@@ -7,11 +7,13 @@ import { makeCssSelectors, normalizeValue } from './utils'
 
 export interface PluginOptions {
     /** The root font-size, in pixels */
-    rootSize: number
+    rootSize?: number
+    /** Custom utility classname */
+    className?: string
 }
 
 export default plugin.withOptions<Partial<PluginOptions>>(
-    ({ rootSize = 16 } = {}) => {
+    ({ rootSize = 16, className = 'capsize' } = {}) => {
         return function ({ addUtilities, theme }) {
             let fontMetrics = theme('fontMetrics', {}) as Record<
                 string,
@@ -43,7 +45,12 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                         })
 
                         utilities[
-                            makeCssSelectors(fontFamily, sizeName, leading)
+                            makeCssSelectors(
+                                fontFamily,
+                                sizeName,
+                                leading,
+                                className,
+                            )
                         ] = {
                             '&::before': before,
                             '&::after': after,
