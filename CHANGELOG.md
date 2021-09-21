@@ -1,5 +1,15 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- [#103](https://github.com/stormwarning/tailwindcss-capsize/pull/103) [`46053d4`](https://github.com/stormwarning/tailwindcss-capsize/commit/46053d4cdc01b461af5eb24728e430d922c97ade) Thanks [@stormwarning](https://github.com/stormwarning)! - Allow custom activation class via `className` option
+
+  ```js
+  require('tailwindcss-capsize')({ className: 'leading-trim' })
+  ```
+
 ## 2.0.0 — 2021-09-21
 
 #### 💣 Breaking Changes
