@@ -1,15 +1,13 @@
-import capsize from 'capsize'
+import { createStyleObject } from '@capsizecss/core'
+import type { FontMetrics } from '@capsizecss/core'
+import type { NestedObject } from '@navith/tailwindcss-plugin-author-types'
 import plugin from 'tailwindcss/plugin'
 
-import { PluginOptions } from './types'
 import { makeCssSelectors, normalizeValue } from './utils'
 
-interface FontMetrics {
-    ascent: number
-    descent: number
-    lineGap: number
-    unitsPerEm: number
-    capHeight: number
+export interface PluginOptions {
+    /** The root font-size, in pixels */
+    rootSize: number
 }
 
 module.exports = plugin.withOptions<Partial<PluginOptions>>(
@@ -22,7 +20,7 @@ module.exports = plugin.withOptions<Partial<PluginOptions>>(
             >
             let lineHeight = theme('lineHeight', {}) as Record<string, string>
             let fontSize = theme('fontSize', {}) as Record<string, string>
-            let utilities = {} as { [property: string]: any }
+            let utilities: NestedObject = {}
 
             Object.keys(fontMetrics).forEach((fontFamily) => {
                 let fontConfig = fontMetrics[fontFamily]
@@ -39,8 +37,7 @@ module.exports = plugin.withOptions<Partial<PluginOptions>>(
                         let {
                             '::after': after,
                             '::before': before,
-                            padding,
-                        } = capsize({
+                        } = createStyleObject({
                             fontMetrics: fontConfig,
                             fontSize: fs,
                             leading: lh,
@@ -49,7 +46,6 @@ module.exports = plugin.withOptions<Partial<PluginOptions>>(
                         utilities[
                             makeCssSelectors(fontFamily, sizeName, leading)
                         ] = {
-                            padding,
                             '&::before': before,
                             '&::after': after,
                         }
