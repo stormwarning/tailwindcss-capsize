@@ -3,7 +3,7 @@ import postcss from 'postcss'
 import { format } from 'prettier'
 import tailwindcss from 'tailwindcss'
 
-// Need to test this how consumers will use it, which is currently (Aug 2021) require.
+// Need to test this how consumers will use it, using `require()`.
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const capsizePlugin = require('../dist')
 
