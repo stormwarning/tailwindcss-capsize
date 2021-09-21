@@ -1,5 +1,23 @@
 # Change Log
 
+## 2.0.0
+
+### Major Changes
+
+- [#94](https://github.com/stormwarning/tailwindcss-capsize/pull/94) [`9578ac7`](https://github.com/stormwarning/tailwindcss-capsize/commit/9578ac7a79ab283bcacb4ab98b39014156183cf5) Thanks [@DylanVann](https://github.com/DylanVann)! - Use new `@capsize/core` library
+  This _will_ change the final output CSS, as the technique to perform
+  the leading trim has been simplified. See the [capsize release notes](https://github.com/seek-oss/capsize/releases/tag/capsize%402.0.0)
+  for more details.
+
+### Patch Changes
+
+- [#95](https://github.com/stormwarning/tailwindcss-capsize/pull/95) [`5f7f9a1`](https://github.com/stormwarning/tailwindcss-capsize/commit/5f7f9a167ae216ecd50d19a51c7712ef6aa81349) Thanks [@DylanVann](https://github.com/DylanVann)! - Fix usage when `require`ing plugin
+
+  ```diff
+  - require('tailwindcss-capsize').default
+  + require('tailwindcss-capsize')
+  ```
+
 ### 1.2.2 — 2021-03-03
 
 #### 🐛 Fixed
