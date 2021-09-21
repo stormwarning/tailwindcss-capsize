@@ -21,7 +21,7 @@ const THEME_CONFIG = {
 }
 
 expect.extend({
-    toMatchCss: (receivedCss, expectedCss) => {
+    toMatchCss: (receivedCss: string, expectedCss: string) => {
         let strip = (str: string) => str.replace(/[;\s]/g, '')
 
         if (strip(receivedCss) === strip(expectedCss)) {
@@ -48,7 +48,7 @@ expect.extend({
 
 describe('Plugin', () => {
     it('generates utility classes with a default root size', async () => {
-        return postcss(
+        return await postcss(
             tailwindcss({
                 theme: {
                     ...THEME_CONFIG,
@@ -69,8 +69,6 @@ describe('Plugin', () => {
                 from: undefined,
             })
             .then((result) => {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 expect(result.css).toMatchCss(`
                     .font-sans.text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm.leading-sm.capsize::before,
@@ -156,7 +154,7 @@ describe('Plugin', () => {
     })
 
     it('generates utility classes with a custom root size', async () => {
-        return postcss(
+        return await postcss(
             tailwindcss({
                 theme: {
                     ...THEME_CONFIG,
@@ -177,8 +175,6 @@ describe('Plugin', () => {
                 from: undefined,
             })
             .then((result) => {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 expect(result.css).toMatchCss(`
                     .font-sans.text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm.leading-sm.capsize::before,
@@ -264,7 +260,7 @@ describe('Plugin', () => {
     })
 
     it('works with unitless or percentage line-height values', async () => {
-        return postcss(
+        return await postcss(
             tailwindcss({
                 theme: {
                     ...THEME_CONFIG,
@@ -284,8 +280,6 @@ describe('Plugin', () => {
                 from: undefined,
             })
             .then((result) => {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 expect(result.css).toMatchCss(`
                     .font-sans.text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm.leading-sm.capsize::before,
