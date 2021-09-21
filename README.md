@@ -2,7 +2,7 @@
 
 [![npm version][npm-img]][npm-url]
 
-> A TailwindCSS plugin that generates utility classes for trimming whitespace above and below capital letters using [Capsize](https://github.com/seek-oss/capsize).
+> A TailwindCSS plugin that generates leading-trim utility classes using [Capsize](https://github.com/seek-oss/capsize).
 
 ```bash
 $ npm install --save-dev tailwindcss-capsize
@@ -22,7 +22,7 @@ This plugin requires a `fontMetrics` key added to your Tailwind theme. It should
 }
 ```
 
-These values can be determined by using the [Capsize demo site](https://seek-oss.github.io/capsize/) or by using [fontkit](https://github.com/foliojs/fontkit) or some other means.
+These values can be determined by using the [Capsize website](https://seek-oss.github.io/capsize/), by using [fontkit](https://github.com/foliojs/fontkit), or some other means.
 
 ### A full example
 
@@ -53,13 +53,12 @@ module.exports = {
 The plugin assumes a root font-size of `16px` when converting from rem values. To use a different value, pass it in (without units) to the plugin options.
 
 ```js
-require('tailwindcss-capsize').default({ rootSize: 12 })
+require('tailwindcss-capsize')({ rootSize: 12 })
 ```
 
 ## Usage
 
-The new `.capsize` utility class should be applied to the *direct parent* element surrounding a text node. This class only provides the neccessary styles for trimming whitespace, utility classes for setting `font-family`, `font-size`, and `line-height` will need to be applied as well.
+The new `.capsize` utility class should be applied to the _direct parent_ element surrounding a text node. This class only provides the neccessary styles for trimming whitespace, utility classes for setting `font-family`, `font-size`, and `line-height` will need to be applied as well.
 
 [npm-url]: https://www.npmjs.com/package/tailwindcss-capsize
-
 [npm-img]: https://img.shields.io/npm/v/tailwindcss-capsize.svg?style=flat-square
