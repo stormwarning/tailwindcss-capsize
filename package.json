@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.4.1",
-    "@changesets/cli": "2.14.x",
+    "@changesets/cli": "2.17.x",
     "@navith/tailwindcss-plugin-author-types": "1.8.1-0.1",
     "@typescript-eslint/eslint-plugin": "4.31.x",
     "@typescript-eslint/parser": "4.31.x",
