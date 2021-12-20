@@ -14,7 +14,7 @@ export function normalizeValue(
     let isPercentValue = value.endsWith('%')
     let isUnitlessValue = /[0-9]$/.test(value)
 
-    if ((isPercentValue || isUnitlessValue) && fs) {
+    if ((isPercentValue || isUnitlessValue) && fs != null) {
         let multiplier = isPercentValue
             ? parseInt(value.replace('%', '')) / 100
             : parseFloat(value)
@@ -29,7 +29,7 @@ const cssRegex = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/
 export function getValueAndUnit(value: string): [number, string | undefined] {
     if (typeof value !== 'string') return [value, '']
     let matchedValue = value.match(cssRegex)
-    if (matchedValue) return [parseFloat(value), matchedValue[2]]
+    if (matchedValue != null) return [parseFloat(value), matchedValue[2]]
     return [parseInt(value), undefined]
 }
 
@@ -37,12 +37,13 @@ export function makeCssSelectors(
     fontFamily: string,
     sizeName: string,
     leading: string,
+    className: string,
 ): string {
     return (
-        `.font-${fontFamily}.text-${sizeName}.leading-${leading}.capsize,` +
-        `.font-${fontFamily} .text-${sizeName}.leading-${leading}.capsize,` +
-        `.font-${fontFamily} .text-${sizeName} .leading-${leading}.capsize,` +
-        `.text-${sizeName} .font-${fontFamily}.leading-${leading}.capsize,` +
-        `.text-${sizeName} .font-${fontFamily} .leading-${leading}.capsize`
+        `.font-${fontFamily}.text-${sizeName}.leading-${leading}.${className},` +
+        `.font-${fontFamily} .text-${sizeName}.leading-${leading}.${className},` +
+        `.font-${fontFamily} .text-${sizeName} .leading-${leading}.${className},` +
+        `.text-${sizeName} .font-${fontFamily}.leading-${leading}.${className},` +
+        `.text-${sizeName} .font-${fontFamily} .leading-${leading}.${className}`
     )
 }

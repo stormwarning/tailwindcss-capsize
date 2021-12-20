@@ -52,16 +52,27 @@ module.exports = {
 }
 ```
 
+## Usage
+
+The new `.capsize` utility class should be applied to the _direct parent_ element surrounding a text node. This class only provides the neccessary styles for trimming whitespace, utility classes for setting `font-family`, `font-size`, and `line-height` will need to be applied as well.
+
+## Options
+
+### rootSize
+
 The plugin assumes a root font-size of `16px` when converting from rem values. To use a different value, pass it in (without units) to the plugin options.
 
 ```js
-require('tailwindcss-capsize').default({ rootSize: 12 })
+require('tailwindcss-capsize')({ rootSize: 12 })
 ```
 
-## Usage
+### className
 
-The new `.capsize` utility class should be applied to the *direct parent* element surrounding a text node. This class only provides the neccessary styles for trimming whitespace, utility classes for setting `font-family`, `font-size`, and `line-height` will need to be applied as well.
+The default `.capsize` utility class can be replaced with a custom class name if preferred.
+
+```js
+require('tailwindcss-capsize')({ className: 'leading-trim' })
+```
 
 [npm-url]: https://www.npmjs.com/package/tailwindcss-capsize
-
 [npm-img]: https://img.shields.io/npm/v/tailwindcss-capsize.svg?style=flat-square
