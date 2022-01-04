@@ -49,29 +49,30 @@ expect.extend({
 })
 
 describe('Plugin', () => {
-    it('generates utility classes with a default root size', async () => {
-        return await postcss(
-            tailwindcss({
-                theme: {
-                    ...THEME_CONFIG,
-                    fontSize: {
-                        sm: '14px',
-                        md: '1.5rem',
+    describe('in "modern" mode', () => {
+        it('generates utility classes with a default root size', async () => {
+            return await postcss(
+                tailwindcss({
+                    theme: {
+                        ...THEME_CONFIG,
+                        fontSize: {
+                            sm: '14px',
+                            md: '1.5rem',
+                        },
+                        lineHeight: {
+                            sm: '20px',
+                            md: '2.5rem',
+                        },
                     },
-                    lineHeight: {
-                        sm: '20px',
-                        md: '2.5rem',
-                    },
-                },
-                corePlugins: false,
-                plugins: [capsizePlugin],
-            }),
-        )
-            .process('@tailwind components; @tailwind utilities', {
-                from: undefined,
-            })
-            .then((result) => {
-                expect(result.css).toMatchCss(`
+                    corePlugins: false,
+                    plugins: [capsizePlugin],
+                }),
+            )
+                .process('@tailwind utilities', {
+                    from: undefined,
+                })
+                .then((result) => {
+                    expect(result.css).toMatchCss(`
                     .font-sans.text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm .leading-sm.capsize::before,
@@ -152,32 +153,140 @@ describe('Plugin', () => {
                         display: table;
                     }
                 `)
-            })
+                })
+        })
     })
 
-    it('generates utility classes with a custom root size', async () => {
-        return await postcss(
-            tailwindcss({
-                theme: {
-                    ...THEME_CONFIG,
-                    fontSize: {
-                        sm: '14px',
-                        md: '1.5rem',
+    describe('in "classic" mode', () => {
+        it('generates utility classes with a default root size', async () => {
+            return await postcss(
+                tailwindcss({
+                    theme: {
+                        ...THEME_CONFIG,
+                        fontSize: {
+                            sm: '14px',
+                            md: '1.5rem',
+                        },
+                        lineHeight: {
+                            sm: '20px',
+                            md: '2.5rem',
+                        },
                     },
-                    lineHeight: {
-                        sm: '20px',
-                        md: '2.5rem',
+                    corePlugins: false,
+                    plugins: [capsizePlugin({ mode: 'classic' })],
+                }),
+            )
+                .process('@tailwind components; @tailwind utilities', {
+                    from: undefined,
+                })
+                .then((result) => {
+                    expect(result.css).toMatchCss(`
+                    .font-sans.text-sm.leading-sm.capsize::before,
+                    .font-sans .text-sm.leading-sm.capsize::before,
+                    .font-sans .text-sm .leading-sm.capsize::before,
+                    .text-sm .font-sans.leading-sm.capsize::before,
+                    .text-sm .font-sans .leading-sm.capsize::before {
+                        content: '';
+                        margin-bottom: -0.3506em;
+                        display: table;
+                    }
+
+                    .font-sans.text-sm.leading-sm.capsize::after,
+                    .font-sans .text-sm.leading-sm.capsize::after,
+                    .font-sans .text-sm .leading-sm.capsize::after,
+                    .text-sm .font-sans.leading-sm.capsize::after,
+                    .text-sm .font-sans .leading-sm.capsize::after {
+                        content: '';
+                        margin-top: -0.3506em;
+                        display: table;
+                    }
+
+                    .font-sans.text-sm.leading-md.capsize::before,
+                    .font-sans .text-sm.leading-md.capsize::before,
+                    .font-sans .text-sm .leading-md.capsize::before,
+                    .text-sm .font-sans.leading-md.capsize::before,
+                    .text-sm .font-sans .leading-md.capsize::before {
+                        content: '';
+                        margin-bottom: -1.0649em;
+                        display: table;
+                    }
+
+                    .font-sans.text-sm.leading-md.capsize::after,
+                    .font-sans .text-sm.leading-md.capsize::after,
+                    .font-sans .text-sm .leading-md.capsize::after,
+                    .text-sm .font-sans.leading-md.capsize::after,
+                    .text-sm .font-sans .leading-md.capsize::after {
+                        content: '';
+                        margin-top: -1.0649em;
+                        display: table;
+                    }
+
+                    .font-sans.text-md.leading-sm.capsize::before,
+                    .font-sans .text-md.leading-sm.capsize::before,
+                    .font-sans .text-md .leading-sm.capsize::before,
+                    .text-md .font-sans.leading-sm.capsize::before,
+                    .text-md .font-sans .leading-sm.capsize::before {
+                        content: '';
+                        margin-bottom: -0.053em;
+                        display: table;
+                    }
+
+                    .font-sans.text-md.leading-sm.capsize::after,
+                    .font-sans .text-md.leading-sm.capsize::after,
+                    .font-sans .text-md .leading-sm.capsize::after,
+                    .text-md .font-sans.leading-sm.capsize::after,
+                    .text-md .font-sans .leading-sm.capsize::after {
+                        content: '';
+                        margin-top: -0.053em;
+                        display: table;
+                    }
+
+                    .font-sans.text-md.leading-md.capsize::before,
+                    .font-sans .text-md.leading-md.capsize::before,
+                    .font-sans .text-md .leading-md.capsize::before,
+                    .text-md .font-sans.leading-md.capsize::before,
+                    .text-md .font-sans .leading-md.capsize::before {
+                        content: '';
+                        margin-bottom: -0.4697em;
+                        display: table;
+                    }
+
+                    .font-sans.text-md.leading-md.capsize::after,
+                    .font-sans .text-md.leading-md.capsize::after,
+                    .font-sans .text-md .leading-md.capsize::after,
+                    .text-md .font-sans.leading-md.capsize::after,
+                    .text-md .font-sans .leading-md.capsize::after {
+                        content: '';
+                        margin-top: -0.4697em;
+                        display: table;
+                    }
+                `)
+                })
+        })
+
+        it('generates utility classes with a custom root size', async () => {
+            return await postcss(
+                tailwindcss({
+                    theme: {
+                        ...THEME_CONFIG,
+                        fontSize: {
+                            sm: '14px',
+                            md: '1.5rem',
+                        },
+                        lineHeight: {
+                            sm: '20px',
+                            md: '2.5rem',
+                        },
                     },
-                },
-                corePlugins: false,
-                plugins: [capsizePlugin({ rootSize: 12 })],
-            }),
-        )
-            .process('@tailwind components; @tailwind utilities', {
-                from: undefined,
-            })
-            .then((result) => {
-                expect(result.css).toMatchCss(`
+                    corePlugins: false,
+                    plugins: [capsizePlugin({ rootSize: 12, mode: 'classic' })],
+                }),
+            )
+                .process('@tailwind components; @tailwind utilities', {
+                    from: undefined,
+                })
+                .then((result) => {
+                    expect(result.css).toMatchCss(`
                     .font-sans.text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm .leading-sm.capsize::before,
@@ -258,31 +367,31 @@ describe('Plugin', () => {
                         display: table;
                     }
                 `)
-            })
-    })
+                })
+        })
 
-    it('works with unitless or percentage line-height values', async () => {
-        return await postcss(
-            tailwindcss({
-                theme: {
-                    ...THEME_CONFIG,
-                    fontSize: {
-                        sm: '1rem',
+        it('works with unitless or percentage line-height values', async () => {
+            return await postcss(
+                tailwindcss({
+                    theme: {
+                        ...THEME_CONFIG,
+                        fontSize: {
+                            sm: '1rem',
+                        },
+                        lineHeight: {
+                            sm: '100%',
+                            md: '1.5',
+                        },
                     },
-                    lineHeight: {
-                        sm: '100%',
-                        md: '1.5',
-                    },
-                },
-                corePlugins: false,
-                plugins: [capsizePlugin],
-            }),
-        )
-            .process('@tailwind components; @tailwind utilities', {
-                from: undefined,
-            })
-            .then((result) => {
-                expect(result.css).toMatchCss(`
+                    corePlugins: false,
+                    plugins: [capsizePlugin({ mode: 'classic' })],
+                }),
+            )
+                .process('@tailwind components; @tailwind utilities', {
+                    from: undefined,
+                })
+                .then((result) => {
+                    expect(result.css).toMatchCss(`
                     .font-sans.text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm.leading-sm.capsize::before,
                     .font-sans .text-sm .leading-sm.capsize::before,
@@ -323,30 +432,35 @@ describe('Plugin', () => {
                         display: table;
                     }
                 `)
-            })
-    })
+                })
+        })
 
-    it('generates utility classes with a custom activation class', async () => {
-        return await postcss(
-            tailwindcss({
-                theme: {
-                    ...THEME_CONFIG,
-                    fontSize: {
-                        sm: '1rem',
+        it('generates utility classes with a custom activation class', async () => {
+            return await postcss(
+                tailwindcss({
+                    theme: {
+                        ...THEME_CONFIG,
+                        fontSize: {
+                            sm: '1rem',
+                        },
+                        lineHeight: {
+                            md: '1.5',
+                        },
                     },
-                    lineHeight: {
-                        md: '1.5',
-                    },
-                },
-                corePlugins: false,
-                plugins: [capsizePlugin({ className: 'leading-trim' })],
-            }),
-        )
-            .process('@tailwind components; @tailwind utilities', {
-                from: undefined,
-            })
-            .then((result) => {
-                expect(result.css).toMatchCss(`
+                    corePlugins: false,
+                    plugins: [
+                        capsizePlugin({
+                            className: 'leading-trim',
+                            mode: 'classic',
+                        }),
+                    ],
+                }),
+            )
+                .process('@tailwind components; @tailwind utilities', {
+                    from: undefined,
+                })
+                .then((result) => {
+                    expect(result.css).toMatchCss(`
                     .font-sans.text-sm.leading-md.leading-trim::before,
                     .font-sans .text-sm.leading-md.leading-trim::before,
                     .font-sans .text-sm .leading-md.leading-trim::before,
@@ -367,6 +481,7 @@ describe('Plugin', () => {
                         display: table;
                     }
                 `)
-            })
+                })
+        })
     })
 })

@@ -47,3 +47,12 @@ export function makeCssSelectors(
         `.text-${sizeName} .font-${fontFamily} .leading-${leading}.${className}`
     )
 }
+
+export function isPlainObject(value: unknown) {
+    if (Object.prototype.toString.call(value) !== '[object Object]') {
+        return false
+    }
+
+    let prototype = Object.getPrototypeOf(value)
+    return prototype === null || prototype === Object.prototype
+}
