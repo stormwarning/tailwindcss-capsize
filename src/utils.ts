@@ -1,5 +1,20 @@
 type FontSizeValue = [string, Record<'lineHeight', string>]
 
+export function isRelativeValue(value: string) {
+    let isPercentValue = value.endsWith('%')
+    let isUnitlessValue = /[0-9]$/.test(value)
+
+    return isPercentValue || isUnitlessValue
+}
+
+export function getRelativeValue(value: string) {
+    let isPercentValue = value.endsWith('%')
+
+    return isPercentValue
+        ? parseInt(value.replace('%', '')) / 100
+        : parseFloat(value)
+}
+
 export function normalizeValue(
     value: string | FontSizeValue,
     root: number,
@@ -11,14 +26,8 @@ export function normalizeValue(
     if (value.endsWith('rem'))
         return root * parseFloat(value.replace('rem', ''))
 
-    let isPercentValue = value.endsWith('%')
-    let isUnitlessValue = /[0-9]$/.test(value)
-
-    if ((isPercentValue || isUnitlessValue) && fs != null) {
-        let multiplier = isPercentValue
-            ? parseInt(value.replace('%', '')) / 100
-            : parseFloat(value)
-        return fs * multiplier
+    if (isRelativeValue(value) && fs !== undefined) {
+        return fs * getRelativeValue(value)
     }
 
     return parseInt(value)
@@ -55,4 +64,38 @@ export function isPlainObject(value: unknown) {
 
     let prototype = Object.getPrototypeOf(value)
     return prototype === null || prototype === Object.prototype
+}
+
+type ThemeValue = string | string[] | ((p?: any) => string)
+
+/**
+ * Returns a value based on the core theme section.
+ * Adapted from Tailwind internals.
+ *
+ * @see https://github.com/tailwindlabs/tailwindcss/blob/30ea5b14a631b6f68e56740c3d09bb54fcbad08a/src/util/transformThemeValue.js
+ */
+export function normalizeThemeValue(key: string, value: ThemeValue) {
+    switch (key) {
+        case 'fontSize':
+        case 'lineHeight':
+            if (typeof value === 'function') value = value({})
+            if (Array.isArray(value)) value = value[0]
+
+            return value
+
+        case 'fontFamily':
+            if (typeof value === 'function') value = value({})
+            if (Array.isArray(value)) value = value.join(', ')
+
+            return value
+
+        default:
+            if (typeof value === 'function') value = value({})
+
+            return value
+    }
+}
+
+export function round(value: number) {
+    return parseFloat(value.toFixed(4)).toString()
 }
