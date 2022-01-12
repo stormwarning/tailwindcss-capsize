@@ -10,7 +10,7 @@ $ npm install --save-dev tailwindcss-capsize
 
 ## leading-trim?
 
-A proposed CSS property to remove the extra space from text bounding boxes, which affects optical alignment. This [article from Microsoft Design][] outlines the problem and how the proposed solution works.
+A [proposed CSS property](https://www.w3.org/TR/css-inline-3/#leading-trim) to remove the extra space from text bounding boxes, which affects optical alignment. This [article from Microsoft Design][] outlines the problem and how the proposed solution works.
 
 ## Configuration
 
