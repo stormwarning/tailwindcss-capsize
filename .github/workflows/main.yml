@@ -11,12 +11,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Use Node 12
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: 12.x
 
       - name: Use cached node_modules
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: node_modules
           key: nodeModules-${{ hashFiles('**/package-lock.json') }}
