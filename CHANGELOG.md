@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.0
+
+### Major Changes
+
+- [#123](https://github.com/stormwarning/tailwindcss-capsize/pull/123) [`69f29fe`](https://github.com/stormwarning/tailwindcss-capsize/commit/69f29fe9c2bbc99ada1530a4af2e90a2577fc9d1) Thanks [@stormwarning](https://github.com/stormwarning)! - Add `modern` output mode
+  In this mode the `fontFamily`, `fontSize`, and `lineHeight` core plugins are replaced, adding custom properties to the output of each which are used in the `calc()` expressions in the utility class.
+
+  `modern` mode is enabled by default. The previous functionality can be maintained if needed by switching to `classic` mode.
+
 ## 2.1.0 — 2021-09-21
 
 #### 🎁 Added
