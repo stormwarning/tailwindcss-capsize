@@ -86,12 +86,12 @@ describe('Plugin', () => {
                     }
 
                     .text-sm {
-                      --font-size-px: 14px;
+                      --font-size-px: 14;
                       font-size: 14px;
                     }
 
                     .text-md {
-                      --font-size-px: 24px;
+                      --font-size-px: 24;
                       font-size: 1.5rem;
                     }
 
@@ -146,12 +146,12 @@ describe('Plugin', () => {
                       }
 
                       .sm\\:text-sm {
-                        --font-size-px: 14px;
+                        --font-size-px: 14;
                         font-size: 14px;
                       }
 
                       .sm\\:text-md {
-                        --font-size-px: 24px;
+                        --font-size-px: 24;
                         font-size: 1.5rem;
                       }
 
@@ -209,12 +209,12 @@ describe('Plugin', () => {
                     }
 
                     .text-sm {
-                      --font-size-px: 14px;
+                      --font-size-px: 14;
                       font-size: 14px;
                     }
 
                     .text-md {
-                      --font-size-px: 18px;
+                      --font-size-px: 18;
                       font-size: 1.5rem;
                     }
 
@@ -294,7 +294,7 @@ describe('Plugin', () => {
                     }
 
                     .text-sm {
-                      --font-size-px: 16px;
+                      --font-size-px: 16;
                       font-size: 1rem;
                     }
 
@@ -380,7 +380,7 @@ describe('Plugin', () => {
                     }
 
                     .text-sm {
-                      --font-size-px: 16px;
+                      --font-size-px: 16;
                       font-size: 1rem;
                     }
 
