@@ -171,8 +171,6 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                                 fontSize,
                                 rootSize,
                             )
-                            // eslint-disable-next-line no-console
-                            console.log(fontSizeActual)
                             let { lineHeight, letterSpacing } = (isPlainObject(
                                 options,
                             )
