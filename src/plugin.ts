@@ -181,7 +181,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                                   }) as FontSizeOptions
 
                             return {
-                                '--font-size-px': fontSizeActual,
+                                '--font-size-px': String(fontSizeActual),
                                 'font-size': fontSize,
                                 ...(lineHeight === undefined
                                     ? {}

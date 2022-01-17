@@ -13,6 +13,9 @@
   "repository": "stormwarning/tailwindcss-capsize",
   "license": "ISC",
   "author": "Jeff Nelson (https://tidaltheory.io)",
+  "contributors": [
+    "Jesse McLean (https://builtbyfield.com)"
+  ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
