@@ -1,5 +1,14 @@
 # Change Log
 
+### 3.0.1 — 2022-01-17
+
+#### 🐛 Fixed
+
+- Remove unit from `--font-size-px` custom property [#128](https://github.com/stormwarning/tailwindcss-capsize/pull/128)
+
+  Thanks [@essejmclean](https://github.com/essejmclean)!  
+  Fixes issue with `calc()` functions not working correctly.
+
 ## 3.0.0 — 2022-01-11
 
 #### 💣 Breaking Changes
