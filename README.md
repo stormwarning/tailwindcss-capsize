@@ -26,7 +26,7 @@ This plugin requires a `fontMetrics` key added to your Tailwind theme. It should
 }
 ```
 
-These values can be determined by using the [Capsize website](https://seek-oss.github.io/capsize/), by using [fontkit](https://github.com/foliojs/fontkit), by using [FontDrop!](https://fontdrop.info), or some other means.
+These values can be determined by using the [Capsize website](https://seek-oss.github.io/capsize/), [fontkit](https://github.com/foliojs/fontkit), [FontDrop!](https://fontdrop.info), or some other means.
 
 ### A full example
 
@@ -68,7 +68,7 @@ The new `.capsize` utility class should be applied to the _direct parent_ elemen
 
 ### rootSize
 
-type: `number` (optional, default: `16`)
+#### type: `number` (optional, default: `16`)
 
 The plugin assumes a root font-size of `16px` when converting from rem values. To use a different value, pass it in (without units) to the plugin options.
 
@@ -78,7 +78,7 @@ require('tailwindcss-capsize')({ rootSize: 12 })
 
 ### className
 
-type: `string` (optional, default: `'capsize'`)
+#### type: `string` (optional, default: `'capsize'`)
 
 The default `.capsize` utility class can be replaced with a custom class name if preferred.
 
@@ -88,7 +88,7 @@ require('tailwindcss-capsize')({ className: 'leading-trim' })
 
 ### mode
 
-type: `'modern' | 'classic'` (optional, default: `'modern'`)
+#### type: `'modern' | 'classic'` (optional, default: `'modern'`)
 
 By default the plugin replaces the `fontFamily`, `fontSize`, and `lineHeight` core plugins, adding custom properties to the output of each which are used in the `calc()` expressions in the utility class.
 
@@ -129,13 +129,13 @@ To solve this, a child element to the element with the `.capsize` class should w
 <!-- ✅ Does work! -->
 
 <p class="font-sans text-base leading-none capsize">
-    <span class="truncate"> Text to be truncated to a single line </span>
+    <span class="truncate">Text to be truncated to a single line</span>
 </p>
 ```
 
 ## Related
 
-[🔡 tailwindcss-opentype](https://github.com/stormwarning/tailwindcss-opentype): Utility classes for advanced typographic features.
+[🔡 tailwindcss-opentype](https://github.com/stormwarning/tailwindcss-opentype) — Utility classes for advanced typographic features.
 
 [npm-url]: https://www.npmjs.com/package/tailwindcss-capsize
 [npm-img]: https://img.shields.io/npm/v/tailwindcss-capsize.svg?style=flat-square
