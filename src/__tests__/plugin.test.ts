@@ -5,7 +5,7 @@ import tailwindcss from 'tailwindcss'
 
 // Need to test this how consumers will use it, using `require()`.
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const capsizePlugin = require('../dist')
+const capsizePlugin = require('../../dist')
 
 const THEME_CONFIG = {
     screens: {
