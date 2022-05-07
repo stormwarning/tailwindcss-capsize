@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.2
+
+### Patch Changes
+
+- [#153](https://github.com/stormwarning/tailwindcss-capsize/pull/153) [`ebe38df`](https://github.com/stormwarning/tailwindcss-capsize/commit/ebe38df0ea57e6701959f2b7628d883edc65b5fb) Thanks [@stormwarning](https://github.com/stormwarning)! - Use correct custom property with default lineHeight values
+
 ### 3.0.1 — 2022-01-17
 
 #### 🐛 Fixed
