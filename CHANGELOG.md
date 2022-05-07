@@ -1,5 +1,13 @@
 # Change Log
 
+### 3.0.2 — 2022-05-06
+
+#### 🐛 Fixed
+
+- Use correct custom property with default lineHeight values [#153](https://github.com/stormwarning/tailwindcss-capsize/pull/153)
+
+  Fixes issue with a `leading-*` class being required even with fontSize values including a default lineHeight.
+
 ### 3.0.1 — 2022-01-17
 
 #### 🐛 Fixed
