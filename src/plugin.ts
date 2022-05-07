@@ -4,9 +4,8 @@ import type { NestedObject } from '@navith/tailwindcss-plugin-author-types'
 import plugin from 'tailwindcss/plugin'
 
 import {
-    getRelativeValue,
     isPlainObject,
-    isRelativeValue,
+    lineHeightProperties,
     makeCssSelectors,
     normalizeThemeValue,
     normalizeValue,
@@ -183,16 +182,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                             return {
                                 '--font-size-px': String(fontSizeActual),
                                 'font-size': fontSize,
-                                ...(lineHeight === undefined
-                                    ? {}
-                                    : {
-                                          '--line-height-px': normalizeValue(
-                                              lineHeight,
-                                              rootSize,
-                                              fontSizeActual,
-                                          ),
-                                          'line-height': lineHeight,
-                                      }),
+                                ...lineHeightProperties(lineHeight, rootSize),
                                 ...(letterSpacing === undefined
                                     ? {}
                                     : { 'letter-spacing': letterSpacing }),
@@ -222,16 +212,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                                 value,
                             ) as string
 
-                            let lineHeightActual = isRelativeValue(lineHeight)
-                                ? `calc(${getRelativeValue(
-                                      lineHeight,
-                                  )} * var(--font-size-px))`
-                                : normalizeValue(lineHeight, rootSize)
-
-                            return {
-                                '--line-height-offset': `calc((((var(--line-height-scale) * var(--font-size-px)) - ${lineHeightActual}) / 2) / var(--font-size-px))`,
-                                'line-height': lineHeight,
-                            }
+                            return lineHeightProperties(lineHeight, rootSize)
                         },
                     },
                     {

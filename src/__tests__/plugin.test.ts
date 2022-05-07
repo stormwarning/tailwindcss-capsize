@@ -348,6 +348,73 @@ describe('Plugin', () => {
                     `)
                 })
         })
+
+        it('works with default line-height values', async () => {
+            return await postcss(
+                tailwindcss({
+                    theme: {
+                        ...THEME_CONFIG,
+                        screens: {},
+                        fontSize: {
+                            base: ['1rem', '1.5rem'],
+                        },
+                        lineHeight: {},
+                    },
+                    corePlugins: false,
+                    plugins: [capsizePlugin],
+                }),
+            )
+                .process('@tailwind utilities', {
+                    from: undefined,
+                })
+                .then((result) => {
+                    expect(result.css).toMatchCss(`
+                    .font-sans {
+                      --ascent-scale: 0.9688;
+                      --descent-scale: 0.2415;
+                      --cap-height-scale: 0.7273;
+                      --line-gap-scale: 0;
+                      --line-height-scale: 1.2102;
+                      font-family: Inter, sans-serif;
+                    }
+
+                    .text-base {
+                      --font-size-px: 16;
+                      font-size: 1rem;
+                      --line-height-offset: calc(
+                        (((var(--line-height-scale) * var(--font-size-px)) - 24) / 2) /
+                          var(--font-size-px)
+                      );
+                      line-height: 1.5rem;
+                    }
+
+                    .capsize::before {
+                      display: table;
+                      content: "";
+                      margin-bottom: calc(
+                        (
+                          (
+                            var(--ascent-scale) - var(--cap-height-scale) +
+                              var(--line-gap-scale) / 2
+                          ) - var(--line-height-offset)
+                        ) * -1em
+                      );
+                    }
+
+                    .capsize::after {
+                      display: table;
+                      content: "";
+                      margin-top: calc(
+                        (
+                          (var(--descent-scale) + var(--line-gap-scale) / 2) -
+                            var(--line-height-offset)
+                        ) * -1em
+                      );
+                    }
+                    `)
+                })
+        })
+
         it('generates utility classes with a custom activation class', async () => {
             return await postcss(
                 tailwindcss({

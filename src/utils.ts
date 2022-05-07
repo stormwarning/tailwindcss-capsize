@@ -99,3 +99,20 @@ export function normalizeThemeValue(key: string, value: ThemeValue) {
 export function round(value: number) {
     return parseFloat(value.toFixed(4)).toString()
 }
+
+/**
+ * Takes a theme value for lineHeight and returns the `line-height` property,
+ * as well as a `--line-height-offset` custom property.
+ */
+export function lineHeightProperties(lineHeight: string, rootSize: number) {
+    if (lineHeight === undefined) return {}
+
+    let lineHeightActual = isRelativeValue(lineHeight)
+        ? `calc(${getRelativeValue(lineHeight)} * var(--font-size-px))`
+        : normalizeValue(lineHeight, rootSize)
+
+    return {
+        '--line-height-offset': `calc((((var(--line-height-scale) * var(--font-size-px)) - ${lineHeightActual}) / 2) / var(--font-size-px))`,
+        'line-height': lineHeight,
+    }
+}
