@@ -1,16 +1,24 @@
 # Change Log
 
-### 3.0.2 — 2022-05-06
+## 3.0.3 — 2022-12-21
 
-#### 🐛 Fixed
+### Patch Changes
+
+- Fix precision loss with fractional pixel font-sizes [#178](https://github.com/stormwarning/tailwindcss-capsize/pull/178)
+
+  Thanks [@andriytyurnikov](https://github.com/andriytyurnikov)!
+
+## 3.0.2 — 2022-05-06
+
+### 🐛 Fixed
 
 - Use correct custom property with default lineHeight values [#153](https://github.com/stormwarning/tailwindcss-capsize/pull/153)
 
   Fixes issue with a `leading-*` class being required even with fontSize values including a default lineHeight.
 
-### 3.0.1 — 2022-01-17
+## 3.0.1 — 2022-01-17
 
-#### 🐛 Fixed
+### 🐛 Fixed
 
 - Remove unit from `--font-size-px` custom property [#128](https://github.com/stormwarning/tailwindcss-capsize/pull/128)
 
@@ -19,7 +27,7 @@
 
 ## 3.0.0 — 2022-01-11
 
-#### 💣 Breaking Changes
+### 💣 Breaking Changes
 
 - Add `modern` output mode [#123](https://github.com/stormwarning/tailwindcss-capsize/pull/123)
 
@@ -29,7 +37,7 @@
 
 ## 2.1.0 — 2021-09-21
 
-#### 🎁 Added
+### 🎁 Added
 
 - Allow custom activation class via new `className` option [#103](https://github.com/stormwarning/tailwindcss-capsize/pull/103)
 
@@ -39,14 +47,14 @@
 
 ## 2.0.0 — 2021-09-21
 
-#### 💣 Breaking Changes
+### 💣 Breaking Changes
 
 - Use new `@capsize/core` library [#94](https://github.com/stormwarning/tailwindcss-capsize/pull/94) Thanks [@DylanVann](https://github.com/DylanVann)!  
   This _will_ change the final output CSS, as the technique to perform
   the leading trim has been simplified. See the [capsize release notes](https://github.com/seek-oss/capsize/releases/tag/capsize%402.0.0)
   for more details.
 
-#### 🐛 Fixed
+### 🐛 Fixed
 
 - Fix usage when `require`ing plugin [#95](https://github.com/stormwarning/tailwindcss-capsize/pull/95) Thanks [@DylanVann](https://github.com/DylanVann)!
 
@@ -55,9 +63,9 @@
   + require('tailwindcss-capsize')
   ```
 
-### 1.2.2 — 2021-03-03
+## 1.2.2 — 2021-03-03
 
-#### 🐛 Fixed
+### 🐛 Fixed
 
 - Fix issue requiring an empty options object to be passed in [#68](https://github.com/stormwarning/tailwindcss-capsize/pull/68)
 
@@ -66,47 +74,47 @@
   + require('tailwindcss-capsize')
   ```
 
-### 1.2.1 — 2021-02-08
+## 1.2.1 — 2021-02-08
 
-#### 🐛 Fixed
+### 🐛 Fixed
 
 - Avoid error when `normalizeValue` gets an array [`e18c905`](https://github.com/stormwarning/tailwindcss-capsize/commit/e18c9055f2f5607c6c2d58c96fa0cfb46bb1e1c6)  
   Still needs to account fully for Tailwind v2 configs, but this helps.
 
 ## 1.2.0 — 2020-10-11
 
-#### 🎁 Added
+### 🎁 Added
 
 - Allow unitless or percentage-based leading values [#34](https://github.com/stormwarning/tailwindcss-capsize/pull/34)  
   Uses the inherited `font-size` to determine pixel `line-height` value.
 
-#### 🐛 Fixed
+### 🐛 Fixed
 
 - Use correct path for `types` import [#30](https://github.com/stormwarning/tailwindcss-capsize/pull/30)  
   This should clear up any TypeScript warnings during local builds.
 
 ## 1.1.0 — 2020-09-04
 
-#### 💣 Breaking Changes
+### 💣 Breaking Changes
 
 - Rename plugin using common prefix convention [`eac9127`](https://github.com/stormwarning/tailwindcss-capsize/commit/eac91277f979ef4233790deedb76cf3ac9b8a9c1) \
   `tailwind-capsize` → `tailwindcss-capsize`
 
-### 1.0.3 — 2020-09-03
+## 1.0.3 — 2020-09-03
 
-#### ♻️ Changed
+### ♻️ Changed
 
 - Cleaned out unused code and fix up docs examples [`bc1372f`](https://github.com/stormwarning/tailwindcss-capsize/commit/bc1372f8a6b96a0b19d2ce48dcbda598a715c25c)
 
-### 1.0.2 — 2020-09-01
+## 1.0.2 — 2020-09-01
 
-#### 🐛 Fixed
+### 🐛 Fixed
 
 - Fixed error when trying to set a custom root font-size value [#16](https://github.com/stormwarning/tailwindcss-capsize/pull/16)
 
-### 1.0.1 — 2020-08-13
+## 1.0.1 — 2020-08-13
 
-#### 🐛 Fixed
+### 🐛 Fixed
 
 - Added actual README and package description & keywords [`327886e`](https://github.com/stormwarning/tailwindcss-capsize/commit/327886ed2b57e76a12424bf6050ac193e0c23d10)
 
