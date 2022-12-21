@@ -22,7 +22,7 @@ export function normalizeValue(
 ): number {
     value = Array.isArray(value) ? value[0] : value
 
-    if (value.endsWith('px')) return parseInt(value.replace('px', ''))
+    if (value.endsWith('px')) return parseFloat(value.replace('px', ''))
     if (value.endsWith('rem'))
         return root * parseFloat(value.replace('rem', ''))
 
