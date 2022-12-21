@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.3
+
+### Patch Changes
+
+- [#178](https://github.com/stormwarning/tailwindcss-capsize/pull/178) [`5810233`](https://github.com/stormwarning/tailwindcss-capsize/commit/5810233d5594307eff744faf16de2fcdee308be0) Thanks [@andriytyurnikov](https://github.com/andriytyurnikov)! - Fix precision loss with fractional pixel font-sizes
+
 ### 3.0.2 — 2022-05-06
 
 #### 🐛 Fixed
