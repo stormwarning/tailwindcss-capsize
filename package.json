@@ -60,7 +60,7 @@
     "husky": "4.3.x",
     "import-sort-style-python": "1.0.x",
     "jest-diff": "27.2.x",
-    "lint-staged": "10.5.x",
+    "lint-staged": "13.1.x",
     "prettier": "2.2.x",
     "prettier-plugin-import-sort": "0.0.6",
     "prettier-plugin-packagejson": "2.2.x",
