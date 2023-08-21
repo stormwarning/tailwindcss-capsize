@@ -170,9 +170,16 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                                 fontSize,
                                 rootSize,
                             )
-                            let { lineHeight, letterSpacing } = (isPlainObject(
-                                options,
-                            )
+                            let {
+                                lineHeight,
+                                letterSpacing,
+                                /**
+                                 * @todo TS error here is probably due to the
+                                 *       outdated version of Tailwind used.
+                                 */
+                                // @ts-expect-error -- See above.
+                                fontWeight,
+                            } = (isPlainObject(options)
                                 ? options
                                 : {
                                       lineHeight: options,
@@ -186,6 +193,9 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                                 ...(letterSpacing === undefined
                                     ? {}
                                     : { 'letter-spacing': letterSpacing }),
+                                ...(fontWeight === undefined
+                                    ? {}
+                                    : { 'font-weight': fontWeight }),
                             }
                         },
                     },
