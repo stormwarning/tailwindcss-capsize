@@ -173,6 +173,11 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                             let {
                                 lineHeight,
                                 letterSpacing,
+                                /**
+                                 * @todo TS error here is probably due to the
+                                 *       outdated version of Tailwind used.
+                                 */
+                                // @ts-expect-error -- See above.
                                 fontWeight,
                             } = (isPlainObject(options)
                                 ? options
