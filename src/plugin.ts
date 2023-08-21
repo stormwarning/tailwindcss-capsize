@@ -170,9 +170,11 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                                 fontSize,
                                 rootSize,
                             )
-                            let { lineHeight, letterSpacing } = (isPlainObject(
-                                options,
-                            )
+                            let {
+                                lineHeight,
+                                letterSpacing,
+                                fontWeight,
+                            } = (isPlainObject(options)
                                 ? options
                                 : {
                                       lineHeight: options,
@@ -186,6 +188,9 @@ export default plugin.withOptions<Partial<PluginOptions>>(
                                 ...(letterSpacing === undefined
                                     ? {}
                                     : { 'letter-spacing': letterSpacing }),
+                                ...(fontWeight === undefined
+                                    ? {}
+                                    : { 'font-weight': fontWeight }),
                             }
                         },
                     },
