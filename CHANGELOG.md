@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.4
+
+### Patch Changes
+
+- Fix fontSize utility not including default fontWeight settings [#209](https://github.com/stormwarning/tailwindcss-capsize/pull/209)
+
 ## 3.0.3 — 2022-12-21
 
 ### Patch Changes
