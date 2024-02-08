@@ -18,11 +18,11 @@ This plugin requires a `fontMetrics` key added to your Tailwind theme. It should
 
 ```ts
 {
-    ascent: number
-    descent: number
-    lineGap: number
-    unitsPerEm: number
-    capHeight: number
+	ascent: number
+	descent: number
+	lineGap: number
+	unitsPerEm: number
+	capHeight: number
 }
 ```
 
@@ -33,24 +33,24 @@ These values can be determined by using the [Capsize website](https://seek-oss.g
 ```js
 // tailwind.config.js
 module.exports = {
-    theme: {
-        fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-        },
-        fontMetrics: {
-            sans: {
-                capHeight: 2048,
-                ascent: 2728,
-                descent: -680,
-                lineGap: 0,
-                unitsPerEm: 2816,
-            },
-        },
-        fontSize: { ... },
-        lineHeight: { ... },
-        ...
-    },
-    plugins: [require('tailwindcss-capsize')],
+	theme: {
+		fontFamily: {
+			sans: ['Inter', 'sans-serif'],
+		},
+		fontMetrics: {
+			sans: {
+				capHeight: 2048,
+				ascent: 2728,
+				descent: -680,
+				lineGap: 0,
+				unitsPerEm: 2816,
+			},
+		},
+		fontSize: { ... },
+		lineHeight: { ... },
+		...
+	},
+	plugins: [require('tailwindcss-capsize')],
 }
 ```
 
@@ -94,12 +94,12 @@ By default the plugin replaces the `fontFamily`, `fontSize`, and `lineHeight` co
 
 ```diff
 .font-sans {
-+   --ascent-scale: 0.9688;
-+   --descent-scale: 0.2415;
-+   --cap-height-scale: 0.7273;
-+   --line-gap-scale: 0;
-+   --line-height-scale: 1.2102;
-    font-family: Inter, sans-serif;
++	--ascent-scale: 0.9688;
++	--descent-scale: 0.2415;
++	--cap-height-scale: 0.7273;
++	--line-gap-scale: 0;
++	--line-height-scale: 1.2102;
+	font-family: Inter, sans-serif;
 }
 ```
 
@@ -119,7 +119,7 @@ Sometimes an interface calls for truncating text to a single line or clamping te
 <!-- ❌ Does NOT work -->
 
 <p class="font-sans text-base leading-none capsize truncate">
-    Text to be truncated to a single line
+	Text to be truncated to a single line
 </p>
 ```
 
@@ -129,7 +129,7 @@ To solve this, a child element to the element with the `.capsize` class should w
 <!-- ✅ Does work! -->
 
 <p class="font-sans text-base leading-none capsize">
-    <span class="truncate">Text to be truncated to a single line</span>
+	<span class="truncate">Text to be truncated to a single line</span>
 </p>
 ```
 

@@ -1,5 +1,5 @@
 declare namespace jest {
-    interface Matchers<R> {
-        toMatchCss: (expected: string) => R
-    }
+	interface Matchers<R> {
+		toMatchCss: (expected: string) => R
+	}
 }
