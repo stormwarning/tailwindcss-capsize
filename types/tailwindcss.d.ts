@@ -1,8 +1,23 @@
 declare module 'tailwindcss'
 
 declare module 'tailwindcss/plugin' {
-	import { CreatePlugin } from '@navith/tailwindcss-plugin-author-types'
+	import type {
+		CreatePlugin,
+		PluginTools as BasePluginTools,
+		NestedObject,
+		ThemeValue,
+		Variants,
+	} from '@navith/tailwindcss-plugin-author-types'
 
-	let createPlugin: CreatePlugin
+	const createPlugin: CreatePlugin
 	export default createPlugin
+
+	interface MatchUtilitiesOptions {
+		values: ThemeValue
+		type: string[]
+		variants?: Variants
+	}
+	export declare type PluginTools = BasePluginTools & {
+		matchUtilities: (utilities: NestedObject, options: MatchUtilitiesOptions) => void
+	}
 }

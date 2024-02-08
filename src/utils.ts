@@ -2,7 +2,7 @@ type FontSizeValue = [string, Record<'lineHeight', string>]
 
 export function isRelativeValue(value: string) {
 	let isPercentValue = value.endsWith('%')
-	let isUnitlessValue = /[0-9]$/.test(value)
+	let isUnitlessValue = /\d$/.test(value)
 
 	return isPercentValue || isUnitlessValue
 }
@@ -11,35 +11,30 @@ export function getRelativeValue(value: string) {
 	let isPercentValue = value.endsWith('%')
 
 	return isPercentValue
-		? parseInt(value.replace('%', '')) / 100
-		: parseFloat(value)
+		? Number.parseInt(value.replace('%', ''), 10) / 100
+		: Number.parseFloat(value)
 }
 
-export function normalizeValue(
-	value: string | FontSizeValue,
-	root: number,
-	fs?: number,
-): number {
+export function normalizeValue(value: string | FontSizeValue, root: number, fs?: number): number {
 	value = Array.isArray(value) ? value[0] : value
 
-	if (value.endsWith('px')) return parseFloat(value.replace('px', ''))
-	if (value.endsWith('rem'))
-		return root * parseFloat(value.replace('rem', ''))
+	if (value.endsWith('px')) return Number.parseFloat(value.replace('px', ''))
+	if (value.endsWith('rem')) return root * Number.parseFloat(value.replace('rem', ''))
 
 	if (isRelativeValue(value) && fs !== undefined) {
 		return fs * getRelativeValue(value)
 	}
 
-	return parseInt(value)
+	return Number.parseInt(value, 10)
 }
 
 const cssRegex = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/
 
 export function getValueAndUnit(value: string): [number, string | undefined] {
 	if (typeof value !== 'string') return [value, '']
-	let matchedValue = value.match(cssRegex)
-	if (matchedValue != null) return [parseFloat(value), matchedValue[2]]
-	return [parseInt(value), undefined]
+	let matchedValue = cssRegex.exec(value)
+	if (matchedValue !== null) return [Number.parseFloat(value), matchedValue[2]]
+	return [Number.parseInt(value, 10), undefined]
 }
 
 export function makeCssSelectors(
@@ -62,7 +57,7 @@ export function isPlainObject(value: unknown) {
 		return false
 	}
 
-	let prototype = Object.getPrototypeOf(value)
+	let prototype = Object.getPrototypeOf(value) as unknown
 	return prototype === null || prototype === Object.prototype
 }
 
@@ -97,7 +92,7 @@ export function normalizeThemeValue(key: string, value: ThemeValue) {
 }
 
 export function round(value: number) {
-	return parseFloat(value.toFixed(4)).toString()
+	return Number.parseFloat(value.toFixed(4)).toString()
 }
 
 /**

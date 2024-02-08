@@ -1,3 +1,3 @@
-import plugin from './plugin'
+import plugin from './plugin.js'
 
-module.exports = plugin
+export = plugin
