@@ -4,18 +4,30 @@
 import { describe, it, expect } from 'vitest'
 
 import capsizePlugin from '../src/index.js'
-import { css, run } from './run.js'
+import { css, html, run } from './run.js'
 
 const CSS_INPUT = css`
 	@tailwind utilities;
 `
 const BASE_CONFIG = {
-	corePlugins: false,
+	content: [
+		{
+			raw: html`
+				<div class="font-sans text-sm leading-sm capsize leading-trim"></div>
+				<div class="font-sans text-md leading-md capsize leading-trim"></div>
+				<div class="sm:font-sans sm:text-sm sm:leading-sm capsize leading-trim"></div>
+				<div class="sm:font-sans sm:text-md sm:leading-md capsize leading-trim"></div>
+			`,
+		},
+	],
+	corePlugins: {
+		fontFamily: false,
+		fontSize: false,
+		lineHeight: false,
+	},
 }
 const BASE_THEME = {
-	screens: {
-		sm: '640px',
-	},
+	screens: {},
 	fontFamily: {
 		sans: ['Inter', 'sans-serif'],
 	},
@@ -37,6 +49,9 @@ describe('Plugin', () => {
 				...BASE_CONFIG,
 				theme: {
 					...BASE_THEME,
+					screens: {
+						sm: '640px',
+					},
 					fontSize: {
 						sm: '14px',
 						md: '1.5rem',
@@ -58,22 +73,14 @@ describe('Plugin', () => {
 						font-family: Inter, sans-serif;
 					}
 
-					.text-sm {
-						--font-size-px: 14;
-						font-size: 14px;
-					}
-
 					.text-md {
 						--font-size-px: 24;
 						font-size: 1.5rem;
 					}
 
-					.leading-sm {
-						--line-height-offset: calc(
-							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
-								var(--font-size-px)
-						);
-						line-height: 20px;
+					.text-sm {
+						--font-size-px: 14;
+						font-size: 14px;
 					}
 
 					.leading-md {
@@ -82,6 +89,14 @@ describe('Plugin', () => {
 								var(--font-size-px)
 						);
 						line-height: 2.5rem;
+					}
+
+					.leading-sm {
+						--line-height-offset: calc(
+							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
+								var(--font-size-px)
+						);
+						line-height: 20px;
 					}
 
 					.capsize::before {
@@ -119,22 +134,14 @@ describe('Plugin', () => {
 							font-family: Inter, sans-serif;
 						}
 
-						.sm\\:text-sm {
-							--font-size-px: 14;
-							font-size: 14px;
-						}
-
 						.sm\\:text-md {
 							--font-size-px: 24;
 							font-size: 1.5rem;
 						}
 
-						.sm\\:leading-sm {
-							--line-height-offset: calc(
-								(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
-									var(--font-size-px)
-							);
-							line-height: 20px;
+						.sm\\:text-sm {
+							--font-size-px: 14;
+							font-size: 14px;
 						}
 
 						.sm\\:leading-md {
@@ -143,6 +150,14 @@ describe('Plugin', () => {
 									var(--font-size-px)
 							);
 							line-height: 2.5rem;
+						}
+
+						.sm\\:leading-sm {
+							--line-height-offset: calc(
+								(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
+									var(--font-size-px)
+							);
+							line-height: 20px;
 						}
 					}
 				`),
@@ -154,7 +169,6 @@ describe('Plugin', () => {
 				...BASE_CONFIG,
 				theme: {
 					...BASE_THEME,
-					screens: {},
 					fontSize: {
 						sm: '14px',
 						md: '1.5rem',
@@ -176,22 +190,14 @@ describe('Plugin', () => {
 						font-family: Inter, sans-serif;
 					}
 
-					.text-sm {
-						--font-size-px: 14;
-						font-size: 14px;
-					}
-
 					.text-md {
 						--font-size-px: 18;
 						font-size: 1.5rem;
 					}
 
-					.leading-sm {
-						--line-height-offset: calc(
-							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
-								var(--font-size-px)
-						);
-						line-height: 20px;
+					.text-sm {
+						--font-size-px: 14;
+						font-size: 14px;
 					}
 
 					.leading-md {
@@ -200,6 +206,14 @@ describe('Plugin', () => {
 								var(--font-size-px)
 						);
 						line-height: 2.5rem;
+					}
+
+					.leading-sm {
+						--line-height-offset: calc(
+							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
+								var(--font-size-px)
+						);
+						line-height: 20px;
 					}
 
 					.capsize::before {
@@ -235,7 +249,6 @@ describe('Plugin', () => {
 				...BASE_CONFIG,
 				theme: {
 					...BASE_THEME,
-					screens: {},
 					fontSize: {
 						sm: '1rem',
 					},
@@ -261,19 +274,6 @@ describe('Plugin', () => {
 						font-size: 1rem;
 					}
 
-					.leading-sm {
-						--line-height-offset: calc(
-							(
-									(
-											(var(--line-height-scale) * var(--font-size-px)) - calc(
-													1 * var(--font-size-px)
-												)
-										) / 2
-								) / var(--font-size-px)
-						);
-						line-height: 100%;
-					}
-
 					.leading-md {
 						--line-height-offset: calc(
 							(
@@ -285,6 +285,19 @@ describe('Plugin', () => {
 								) / var(--font-size-px)
 						);
 						line-height: 1.5;
+					}
+
+					.leading-sm {
+						--line-height-offset: calc(
+							(
+									(
+											(var(--line-height-scale) * var(--font-size-px)) - calc(
+													1 * var(--font-size-px)
+												)
+										) / 2
+								) / var(--font-size-px)
+						);
+						line-height: 100%;
 					}
 
 					.capsize::before {
@@ -320,9 +333,8 @@ describe('Plugin', () => {
 				...BASE_CONFIG,
 				theme: {
 					...BASE_THEME,
-					screens: {},
 					fontSize: {
-						base: ['1rem', '1.5rem'],
+						md: ['1rem', '1.5rem'],
 					},
 					lineHeight: {},
 				},
@@ -338,12 +350,11 @@ describe('Plugin', () => {
 						font-family: Inter, sans-serif;
 					}
 
-					.text-base {
+					.text-md {
 						--font-size-px: 16;
 						font-size: 1rem;
 						--line-height-offset: calc(
-						(((var(--line-height-scale) * var(--font-size-px)) - 24) / 2) /
-							var(--font-size-px)
+							(((var(--line-height-scale) * var(--font-size-px)) - 24) / 2) / var(--font-size-px)
 						);
 						line-height: 1.5rem;
 					}
@@ -352,12 +363,8 @@ describe('Plugin', () => {
 						display: table;
 						content: "";
 						margin-bottom: calc(
-						(
-							(
-							var(--ascent-scale) - var(--cap-height-scale) +
-								var(--line-gap-scale) / 2
-							) - var(--line-height-offset)
-						) * -1em
+							((var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) -
+								var(--line-height-offset)) * -1em
 						);
 					}
 
@@ -365,10 +372,7 @@ describe('Plugin', () => {
 						display: table;
 						content: "";
 						margin-top: calc(
-						(
-							(var(--descent-scale) + var(--line-gap-scale) / 2) -
-							var(--line-height-offset)
-						) * -1em
+							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) * -1em
 						);
 					}
 				`),
@@ -380,7 +384,6 @@ describe('Plugin', () => {
 				...BASE_CONFIG,
 				theme: {
 					...BASE_THEME,
-					screens: {},
 					fontSize: {
 						sm: '1rem',
 					},
@@ -407,12 +410,8 @@ describe('Plugin', () => {
 
 					.leading-md {
 						--line-height-offset: calc(
-						(
-							(
-							(var(--line-height-scale) * var(--font-size-px)) -
-								calc(1.5 * var(--font-size-px))
-							) / 2
-						) / var(--font-size-px)
+							(((var(--line-height-scale) * var(--font-size-px)) - calc(1.5 * var(--font-size-px))) / 2) /
+								var(--font-size-px)
 						);
 						line-height: 1.5;
 					}
@@ -421,12 +420,8 @@ describe('Plugin', () => {
 						display: table;
 						content: "";
 						margin-bottom: calc(
-						(
-							(
-							var(--ascent-scale) - var(--cap-height-scale) +
-								var(--line-gap-scale) / 2
-							) - var(--line-height-offset)
-						) * -1em
+							((var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) -
+								var(--line-height-offset)) * -1em
 						);
 					}
 
@@ -434,10 +429,7 @@ describe('Plugin', () => {
 						display: table;
 						content: "";
 						margin-top: calc(
-						(
-							(var(--descent-scale) + var(--line-gap-scale) / 2) -
-							var(--line-height-offset)
-						) * -1em
+							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) * -1em
 						);
 					}
 				`),
@@ -708,6 +700,11 @@ describe('Plugin', () => {
 		it('generates utility classes with a custom activation class', async () => {
 			await run(CSS_INPUT, {
 				...BASE_CONFIG,
+				content: [
+					{
+						raw: html` <div class="font-sans text-sm leading-md leading-trim"></div> `,
+					},
+				],
 				theme: {
 					...BASE_THEME,
 					fontSize: {
