@@ -1,5 +1,4 @@
 import { createStyleObject, type FontMetrics } from '@capsizecss/core'
-import type { NestedObject } from '@navith/tailwindcss-plugin-author-types'
 import plugin from 'tailwindcss/plugin'
 
 import {
@@ -21,7 +20,7 @@ export interface PluginOptions {
 }
 
 interface FontSizeOptions {
-	lineHeight: string
+	lineHeight?: string
 	letterSpacing?: string
 	fontWeight?: string
 }
@@ -33,7 +32,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 				let fontMetrics = theme('fontMetrics', {}) as Record<string, FontMetrics>
 				let lineHeight = theme('lineHeight', {}) as Record<string, string>
 				let fontSize = theme('fontSize', {}) as Record<string, string>
-				let utilities: NestedObject = {}
+				let utilities = {}
 
 				for (let fontFamily of Object.keys(fontMetrics)) {
 					let fontConfig = fontMetrics[fontFamily]
@@ -62,13 +61,11 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 			}
 		}
 
-		// @ts-expect-error -- `matchUtilities` exists.
-		return function ({ addUtilities, matchUtilities, e, theme, variants }) {
+		return function ({ addUtilities, matchUtilities, e, theme }) {
 			let fontMetrics = theme('fontMetrics', {}) as Record<string, FontMetrics>
 			let fontFamily = (theme('fontFamily', {}) as Record<string, unknown>) ?? {}
 
 			// Font-family
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			matchUtilities(
 				{
 					font(value: string | string[]) {
@@ -108,28 +105,20 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 					},
 				},
 				{
-					// @ts-expect-error -- `defaultValue` should be optional.
 					values: theme('fontFamily'),
 					type: ['lookup', 'generic-name', 'family-name'],
-					// @ts-expect-error -- `defaultValue` should be optional.
-					variants: variants('fontFamily'),
 				},
 			)
 
 			// Font-size
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			matchUtilities(
 				{
+					// @ts-expect-error -- Extra custom properties mismatches base type.
 					text(value: string | [string, string | FontSizeOptions]) {
 						let [fontSize, options] = Array.isArray(value) ? value : [value]
 						let fontSizeActual = normalizeValue(fontSize, rootSize)
 						let { lineHeight, letterSpacing, fontWeight } = (
-							isPlainObject(options)
-								? options
-								: {
-										lineHeight: options,
-										letterSpacing: undefined,
-									}
+							isPlainObject(options) ? options : { lineHeight: options }
 						) as FontSizeOptions
 
 						return {
@@ -144,18 +133,15 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 					},
 				},
 				{
-					// @ts-expect-error -- `defaultValue` should be optional.
 					values: theme('fontSize'),
 					type: ['absolute-size', 'relative-size', 'length', 'percentage'],
-					// @ts-expect-error -- `defaultValue` should be optional.
-					variants: variants('fontSize'),
 				},
 			)
 
 			// Line-height
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			matchUtilities(
 				{
+					// @ts-expect-error -- Extra custom properties mismatches base type.
 					leading(value: string | string[]) {
 						let lineHeight = normalizeThemeValue('lineHeight', value) as string
 
@@ -163,10 +149,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 					},
 				},
 				{
-					// @ts-expect-error -- `defaultValue` should be optional.
 					values: theme('lineHeight'),
-					// @ts-expect-error -- `defaultValue` should be optional.
-					variants: variants('lineHeight'),
 				},
 			)
 

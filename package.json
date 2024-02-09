@@ -16,8 +16,9 @@
   "contributors": [
     "Jesse McLean (https://builtbyfield.com)"
   ],
+  "type": "commonjs",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -33,7 +34,6 @@
       "pre-commit": "lint-staged"
     }
   },
-  "type": "commonjs",
   "lint-staged": {
     "*.{js,ts}": [
       "eslint --fix",
@@ -41,35 +41,22 @@
     ],
     "package.json": "prettier --write"
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "overrides": [
-      {
-        "files": "*.ts",
-        "options": {
-          "printWidth": 100
-        }
-      }
-    ]
-  },
+  "prettier": "@zazen/prettier-config",
   "dependencies": {
     "@capsizecss/core": "^3.0.0"
   },
   "devDependencies": {
     "@changesets/cli": "2.27.1",
-    "@navith/tailwindcss-plugin-author-types": "1.8.1-0.1",
     "@types/eslint": "8.56.2",
     "@zazen/changesets-changelog": "2.0.3",
-    "@zazen/eslint-config": "6.7.0",
+    "@zazen/eslint-config": "6.8.0",
+    "@zazen/prettier-config": "1.0.0",
     "eslint": "8.56.0",
     "husky": "4.3.x",
     "jest-diff": "29.7.0",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
-    "prettier-plugin-packagejson": "2.4.10",
-    "tailwindcss": "2.2.19",
+    "tailwindcss": "3.4.1",
     "typescript": "5.3.3",
     "vitest": "1.2.2"
   },

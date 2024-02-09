@@ -99,7 +99,7 @@ export function round(value: number) {
  * Takes a theme value for lineHeight and returns the `line-height` property,
  * as well as a `--line-height-offset` custom property.
  */
-export function lineHeightProperties(lineHeight: string, rootSize: number) {
+export function lineHeightProperties(lineHeight?: string, rootSize = 16) {
 	if (lineHeight === undefined) return {}
 
 	let lineHeightActual = isRelativeValue(lineHeight)
