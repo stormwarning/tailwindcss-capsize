@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Begin CI...
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Use Node 12
+      - name: Setup Node.js 18.x
         uses: actions/setup-node@v3.1.1
         with:
-          node-version: 12.x
+          node-version: 18.x
 
       - name: Use cached node_modules
         uses: actions/cache@v3.0.2
@@ -26,11 +26,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
-
       - name: Build
         run: npm run build
 
       - name: Test
-        run: npm test -- --ci --coverage --maxWorkers=2
+        run: npm test

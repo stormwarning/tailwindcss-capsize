@@ -1,9 +1,9 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@1.3.0/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@latest/schema.json",
   "access": "public",
   "baseBranch": "main",
   "changelog": [
-    "@changesets/changelog-github",
+    "@zazen/changesets-changelog",
     { "repo": "stormwarning/tailwindcss-capsize" }
   ],
   "commit": false,
