@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.0.5
+
+### Patch Changes
+
+- Reworked internals ([#214](https://github.com/stormwarning/tailwindcss-capsize/pull/214))
+  No notable change in CSS output. Should support Tailwind TypeScript configs better now.
+
 ## 3.0.4
 
 ### Patch Changes
@@ -48,7 +55,7 @@
 - Allow custom activation class via new `className` option [#103](https://github.com/stormwarning/tailwindcss-capsize/pull/103)
 
   ```js
-  require('tailwindcss-capsize')({ className: 'leading-trim' })
+  require("tailwindcss-capsize")({ className: "leading-trim" });
   ```
 
 ## 2.0.0 — 2021-09-21
