@@ -16,20 +16,18 @@
   "contributors": [
     "Jesse McLean (https://builtbyfield.com)"
   ],
+  "type": "commonjs",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "build": "tsdx build --format cjs",
+    "build": "tsc -b tsconfig.build.json",
     "changeset": "changeset add",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
     "release": "npm run build && changeset publish",
-    "start": "tsdx watch",
-    "test": "tsdx test"
+    "test": "vitest run"
   },
   "husky": {
     "hooks": {
@@ -37,48 +35,34 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix",
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "package.json": "prettier --write"
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
+  "prettier": "@zazen/prettier-config",
   "dependencies": {
     "@capsizecss/core": "^3.0.0"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "0.4.1",
-    "@changesets/cli": "2.19.x",
-    "@navith/tailwindcss-plugin-author-types": "1.8.1-0.1",
-    "@typescript-eslint/eslint-plugin": "4.31.x",
-    "@typescript-eslint/parser": "4.31.x",
-    "@zazen/eslint-config": "2.3.x",
-    "eslint": "7.32.x",
-    "eslint-config-standard-with-typescript": "20.0.0",
+    "@changesets/cli": "2.27.1",
+    "@zazen/changesets-changelog": "2.0.3",
+    "@zazen/eslint-config": "6.8.0",
+    "@zazen/prettier-config": "1.0.0",
+    "eslint": "8.56.0",
     "husky": "4.3.x",
-    "import-sort-style-python": "1.0.x",
-    "jest-diff": "27.2.x",
-    "lint-staged": "10.5.x",
-    "prettier": "2.2.x",
-    "prettier-plugin-import-sort": "0.0.6",
-    "prettier-plugin-packagejson": "2.2.x",
-    "tailwindcss": "2.2.19",
-    "tsdx": "0.14.1",
-    "tslib": "2.3.x",
-    "typescript": "4.2.x"
+    "jest-diff": "29.7.0",
+    "lint-staged": "15.2.2",
+    "prettier": "3.2.5",
+    "tailwindcss": "3.4.3",
+    "typescript": "5.4.5",
+    "vitest": "1.5.0"
   },
   "peerDependencies": {
     "tailwindcss": ">= 1.5"
   },
   "engines": {
     "node": ">=10"
-  },
-  "importSort": {
-    ".js,.ts": {
-      "parser": "babylon",
-      "style": "python"
-    }
   }
 }

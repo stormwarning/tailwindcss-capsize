@@ -1,23 +1,35 @@
 {
-  "include": ["src", "types", "src/__tests__"],
   "compilerOptions": {
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
-    "importHelpers": true,
-    "declaration": true,
-    "sourceMap": true,
-    "rootDir": "./src",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {
-      "*": ["src/*", "node_modules/*"]
-    },
-    "jsx": "react",
-    "esModuleInterop": true
-  }
+    // Type Checking
+    "strictNullChecks": true,
+
+    // Modules
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "typeRoots": ["./types"],
+
+    // Emit
+    "outDir": "dist",
+
+    // JavaScript Support
+    "allowJs": true,
+    "checkJs": true,
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
+    // Language and Environment
+    "target": "esnext",
+
+    // Projects
+    "incremental": true,
+
+    // Completeness
+    "skipLibCheck": true
+  },
+  "include": ["__tests__", "src", "types", ".eslintrc.cjs", "*.config.js"],
+  "exclude": ["node_modules", "dist"]
 }
