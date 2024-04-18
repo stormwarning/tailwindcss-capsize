@@ -8,6 +8,9 @@
     "moduleResolution": "nodenext",
     "typeRoots": ["./types"],
 
+    // Emit
+    "outDir": "dist",
+
     // JavaScript Support
     "allowJs": true,
     "checkJs": true,
@@ -15,9 +18,10 @@
     // Interop Constraints
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
 
     // Language and Environment
-    "outDir": "dist",
     "target": "esnext",
 
     // Projects

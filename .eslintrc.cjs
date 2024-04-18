@@ -8,12 +8,7 @@ const config = {
 	env: {
 		node: true,
 	},
-	rules: {
-		/**
-		 * @todo [@zazen/eslint-config@>6.7.0] Remove this rule when it's included in the base config.
-		 */
-		'unicorn/switch-case-braces': ['error', 'avoid'],
-	},
+	rules: {},
 	overrides: [
 		{
 			// Jest config
