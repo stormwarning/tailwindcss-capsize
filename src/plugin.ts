@@ -48,11 +48,10 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 								leading: lh,
 							})
 
-							utilities[makeCssSelectors(fontFamily, sizeName, leading, className)] =
-								{
-									'&::before': before,
-									'&::after': after,
-								}
+							utilities[makeCssSelectors(fontFamily, sizeName, leading, className)] = {
+								'&::before': before,
+								'&::after': after,
+							}
 						}
 					}
 				}
@@ -77,9 +76,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 
 						let family = normalizeThemeValue('fontFamily', value)
 
-						let familyKey = Object.keys(fontFamily).find(
-							(key) => fontFamily[key] === value,
-						)
+						let familyKey = Object.keys(fontFamily).find((key) => fontFamily[key] === value)
 
 						if (familyKey === undefined) return fallback(family)
 
@@ -125,9 +122,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 							'--font-size-px': String(fontSizeActual),
 							'font-size': fontSize,
 							...lineHeightProperties(lineHeight, rootSize),
-							...(letterSpacing === undefined
-								? {}
-								: { 'letter-spacing': letterSpacing }),
+							...(letterSpacing === undefined ? {} : { 'letter-spacing': letterSpacing }),
 							...(fontWeight === undefined ? {} : { 'font-weight': fontWeight }),
 						}
 					},

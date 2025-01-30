@@ -1,13 +1,13 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@latest/schema.json",
-  "access": "public",
-  "baseBranch": "main",
-  "changelog": [
-    "@zazen/changesets-changelog",
-    { "repo": "stormwarning/tailwindcss-capsize" }
-  ],
-  "commit": false,
-  "ignore": [],
-  "linked": [],
-  "updateInternalDependencies": "patch"
+	"$schema": "https://unpkg.com/@changesets/config@latest/schema.json",
+	"access": "public",
+	"baseBranch": "main",
+	"changelog": [
+		"@zazen/changesets-changelog",
+		{ "repo": "stormwarning/tailwindcss-capsize" }
+	],
+	"commit": false,
+	"ignore": [],
+	"linked": [],
+	"updateInternalDependencies": "patch"
 }

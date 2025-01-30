@@ -1,35 +1,35 @@
 {
-  "compilerOptions": {
-    // Type Checking
-    "strictNullChecks": true,
+	"compilerOptions": {
+		// Type Checking
+		"strictNullChecks": true,
 
-    // Modules
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "typeRoots": ["./types"],
+		// Modules
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"typeRoots": ["./types"],
 
-    // Emit
-    "outDir": "dist",
+		// Emit
+		"outDir": "dist",
 
-    // JavaScript Support
-    "allowJs": true,
-    "checkJs": true,
+		// JavaScript Support
+		"allowJs": true,
+		"checkJs": true,
 
-    // Interop Constraints
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+		// Interop Constraints
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
 
-    // Language and Environment
-    "target": "esnext",
+		// Language and Environment
+		"target": "esnext",
 
-    // Projects
-    "incremental": true,
+		// Projects
+		"incremental": true,
 
-    // Completeness
-    "skipLibCheck": true
-  },
-  "include": ["__tests__", "src", "types", ".eslintrc.cjs", "*.config.js"],
-  "exclude": ["node_modules", "dist"]
+		// Completeness
+		"skipLibCheck": true
+	},
+	"include": ["__tests__", "src", "types", ".eslintrc.cjs", "*.config.js"],
+	"exclude": ["node_modules", "dist"]
 }

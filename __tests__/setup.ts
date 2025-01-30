@@ -4,6 +4,7 @@
  */
 
 import { diff } from 'jest-diff'
+// eslint-disable-next-line import/default
 import prettier from 'prettier'
 import { expect } from 'vitest'
 
@@ -51,7 +52,7 @@ expect.extend({
 					return (
 						this.utils.matcherHint('toMatchCss', undefined, undefined, options) +
 						'\n\n' +
-						(diffString && diffString.includes('- Expect')
+						(diffString?.includes('- Expect')
 							? `Difference:\n\n${diffString}`
 							: `Expected: ${this.utils.printExpected(expected)}\n` +
 								`Received: ${this.utils.printReceived(actual)}`)

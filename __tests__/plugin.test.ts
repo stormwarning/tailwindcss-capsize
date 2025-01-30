@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../types/vitest.d.ts" />
 
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import capsizePlugin from '../src/index.js'
 import { css, html, run } from './run.js'
@@ -85,16 +85,14 @@ describe('Plugin', () => {
 
 					.leading-md {
 						--line-height-offset: calc(
-							(((var(--line-height-scale) * var(--font-size-px)) - 40) / 2) /
-								var(--font-size-px)
+							(((var(--line-height-scale) * var(--font-size-px)) - 40) / 2) / var(--font-size-px)
 						);
 						line-height: 2.5rem;
 					}
 
 					.leading-sm {
 						--line-height-offset: calc(
-							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
-								var(--font-size-px)
+							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) / var(--font-size-px)
 						);
 						line-height: 20px;
 					}
@@ -104,11 +102,11 @@ describe('Plugin', () => {
 						content: '';
 						margin-bottom: calc(
 							(
-									(
-											var(--ascent-scale) - var(--cap-height-scale) +
-												var(--line-gap-scale) / 2
-										) - var(--line-height-offset)
-								) * -1em
+									(var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) - var(
+											--line-height-offset
+										)
+								) *
+								-1em
 						);
 					}
 
@@ -116,11 +114,8 @@ describe('Plugin', () => {
 						display: table;
 						content: '';
 						margin-top: calc(
-							(
-									(var(--descent-scale) + var(--line-gap-scale) / 2) - var(
-											--line-height-offset
-										)
-								) * -1em
+							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) *
+								-1em
 						);
 					}
 
@@ -146,16 +141,14 @@ describe('Plugin', () => {
 
 						.sm\\:leading-md {
 							--line-height-offset: calc(
-								(((var(--line-height-scale) * var(--font-size-px)) - 40) / 2) /
-									var(--font-size-px)
+								(((var(--line-height-scale) * var(--font-size-px)) - 40) / 2) / var(--font-size-px)
 							);
 							line-height: 2.5rem;
 						}
 
 						.sm\\:leading-sm {
 							--line-height-offset: calc(
-								(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
-									var(--font-size-px)
+								(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) / var(--font-size-px)
 							);
 							line-height: 20px;
 						}
@@ -202,16 +195,14 @@ describe('Plugin', () => {
 
 					.leading-md {
 						--line-height-offset: calc(
-							(((var(--line-height-scale) * var(--font-size-px)) - 30) / 2) /
-								var(--font-size-px)
+							(((var(--line-height-scale) * var(--font-size-px)) - 30) / 2) / var(--font-size-px)
 						);
 						line-height: 2.5rem;
 					}
 
 					.leading-sm {
 						--line-height-offset: calc(
-							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) /
-								var(--font-size-px)
+							(((var(--line-height-scale) * var(--font-size-px)) - 20) / 2) / var(--font-size-px)
 						);
 						line-height: 20px;
 					}
@@ -221,11 +212,11 @@ describe('Plugin', () => {
 						content: '';
 						margin-bottom: calc(
 							(
-									(
-											var(--ascent-scale) - var(--cap-height-scale) +
-												var(--line-gap-scale) / 2
-										) - var(--line-height-offset)
-								) * -1em
+									(var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) - var(
+											--line-height-offset
+										)
+								) *
+								-1em
 						);
 					}
 
@@ -233,11 +224,8 @@ describe('Plugin', () => {
 						display: table;
 						content: '';
 						margin-top: calc(
-							(
-									(var(--descent-scale) + var(--line-gap-scale) / 2) - var(
-											--line-height-offset
-										)
-								) * -1em
+							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) *
+								-1em
 						);
 					}
 				`),
@@ -281,8 +269,10 @@ describe('Plugin', () => {
 											(var(--line-height-scale) * var(--font-size-px)) - calc(
 													1.5 * var(--font-size-px)
 												)
-										) / 2
-								) / var(--font-size-px)
+										) /
+										2
+								) /
+								var(--font-size-px)
 						);
 						line-height: 1.5;
 					}
@@ -294,8 +284,10 @@ describe('Plugin', () => {
 											(var(--line-height-scale) * var(--font-size-px)) - calc(
 													1 * var(--font-size-px)
 												)
-										) / 2
-								) / var(--font-size-px)
+										) /
+										2
+								) /
+								var(--font-size-px)
 						);
 						line-height: 100%;
 					}
@@ -305,11 +297,11 @@ describe('Plugin', () => {
 						content: '';
 						margin-bottom: calc(
 							(
-									(
-											var(--ascent-scale) - var(--cap-height-scale) +
-												var(--line-gap-scale) / 2
-										) - var(--line-height-offset)
-								) * -1em
+									(var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) - var(
+											--line-height-offset
+										)
+								) *
+								-1em
 						);
 					}
 
@@ -317,11 +309,8 @@ describe('Plugin', () => {
 						display: table;
 						content: '';
 						margin-top: calc(
-							(
-									(var(--descent-scale) + var(--line-gap-scale) / 2) - var(
-											--line-height-offset
-										)
-								) * -1em
+							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) *
+								-1em
 						);
 					}
 				`),

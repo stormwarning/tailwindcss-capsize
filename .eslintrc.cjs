@@ -8,14 +8,17 @@ const config = {
 	env: {
 		node: true,
 	},
-	rules: {},
+	rules: {
+		'@typescript-eslint/ban-types': 'off',
+		'@typescript-eslint/lines-between-class-members': 'off',
+		'@typescript-eslint/padding-line-between-statements': 'off',
+
+		'n/file-extension-in-import': ['error', 'always'],
+	},
 	overrides: [
 		{
 			// Jest config
-			files: [
-				'**/__tests__/**/*.{js,ts,tsx}',
-				'**/*.@(spec|test).{js,ts,tsx}',
-			],
+			files: ['**/__tests__/**/*.{js,ts,tsx}', '**/*.@(spec|test).{js,ts,tsx}'],
 			env: {
 				jest: true,
 			},
@@ -33,4 +36,5 @@ const config = {
 	],
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 module.exports = config

@@ -1,68 +1,68 @@
 {
-  "name": "tailwindcss-capsize",
-  "version": "3.0.5",
-  "description": "TailwindCSS leading-trim utility classes.",
-  "keywords": [
-    "tailwindcss",
-    "tailwindcss-plugin",
-    "capsize",
-    "leading-trim",
-    "typography",
-    "whitespace"
-  ],
-  "repository": "stormwarning/tailwindcss-capsize",
-  "license": "ISC",
-  "author": "Jeff Nelson (https://tidaltheory.io)",
-  "contributors": [
-    "Jesse McLean (https://builtbyfield.com)"
-  ],
-  "type": "commonjs",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "changeset": "changeset add",
-    "release": "npm run build && changeset publish",
-    "test": "vitest run"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "package.json": "prettier --write"
-  },
-  "prettier": "@zazen/prettier-config",
-  "dependencies": {
-    "@capsizecss/core": "^3.0.0"
-  },
-  "devDependencies": {
-    "@changesets/cli": "2.27.1",
-    "@zazen/changesets-changelog": "2.0.3",
-    "@zazen/eslint-config": "6.8.0",
-    "@zazen/prettier-config": "1.0.0",
-    "eslint": "8.56.0",
-    "husky": "4.3.x",
-    "jest-diff": "29.7.0",
-    "lint-staged": "15.2.2",
-    "prettier": "3.2.5",
-    "tailwindcss": "3.4.3",
-    "typescript": "5.4.5",
-    "vitest": "1.5.0"
-  },
-  "peerDependencies": {
-    "tailwindcss": ">= 1.5"
-  },
-  "engines": {
-    "node": ">=10"
-  }
+	"name": "tailwindcss-capsize",
+	"version": "3.0.5",
+	"description": "TailwindCSS leading-trim utility classes.",
+	"keywords": [
+		"tailwindcss",
+		"tailwindcss-plugin",
+		"capsize",
+		"leading-trim",
+		"typography",
+		"whitespace"
+	],
+	"repository": "stormwarning/tailwindcss-capsize",
+	"license": "ISC",
+	"author": "Jeff Nelson (https://tidaltheory.io)",
+	"contributors": [
+		"Jesse McLean (https://builtbyfield.com)"
+	],
+	"type": "commonjs",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "tsc -b tsconfig.build.json",
+		"changeset": "changeset add",
+		"release": "npm run build && changeset publish",
+		"test": "vitest run"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,ts}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"package.json": "prettier --write"
+	},
+	"prettier": "@zazen/prettier-config",
+	"dependencies": {
+		"@capsizecss/core": "^3.0.0"
+	},
+	"devDependencies": {
+		"@changesets/cli": "2.27.1",
+		"@zazen/changesets-changelog": "2.0.3",
+		"@zazen/eslint-config": "6.10.0",
+		"@zazen/prettier-config": "1.1.1",
+		"eslint": "8.57.1",
+		"husky": "4.3.x",
+		"jest-diff": "29.7.0",
+		"lint-staged": "15.2.2",
+		"prettier": "3.4.2",
+		"tailwindcss": "3.4.3",
+		"typescript": "5.4.5",
+		"vitest": "1.5.0"
+	},
+	"peerDependencies": {
+		"tailwindcss": ">= 1.5"
+	},
+	"engines": {
+		"node": ">=10"
+	}
 }
