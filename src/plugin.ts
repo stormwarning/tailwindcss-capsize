@@ -49,8 +49,16 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 							})
 
 							utilities[makeCssSelectors(fontFamily, sizeName, leading, className)] = {
-								'&::before': before,
-								'&::after': after,
+								'&::before': {
+									content: before.content,
+									marginBlockEnd: before.marginBottom,
+									display: before.display,
+								},
+								'&::after': {
+									content: after.content,
+									marginBlockStart: after.marginTop,
+									display: after.display,
+								},
 							}
 						}
 					}
@@ -155,13 +163,13 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 						'&::before': {
 							display: 'table',
 							content: '""',
-							'margin-bottom':
+							'margin-block-end':
 								'calc(((var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) * -1em)',
 						},
 						'&::after': {
 							display: 'table',
 							content: '""',
-							'margin-top':
+							'margin-block-start':
 								'calc(((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) * -1em)',
 						},
 					},

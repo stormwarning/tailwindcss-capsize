@@ -100,7 +100,7 @@ describe('Plugin', () => {
 					.capsize::before {
 						display: table;
 						content: '';
-						margin-bottom: calc(
+						margin-block-end: calc(
 							(
 									(var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) - var(
 											--line-height-offset
@@ -113,7 +113,7 @@ describe('Plugin', () => {
 					.capsize::after {
 						display: table;
 						content: '';
-						margin-top: calc(
+						margin-block-start: calc(
 							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) *
 								-1em
 						);
@@ -210,7 +210,7 @@ describe('Plugin', () => {
 					.capsize::before {
 						display: table;
 						content: '';
-						margin-bottom: calc(
+						margin-block-end: calc(
 							(
 									(var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) - var(
 											--line-height-offset
@@ -223,7 +223,7 @@ describe('Plugin', () => {
 					.capsize::after {
 						display: table;
 						content: '';
-						margin-top: calc(
+						margin-block-start: calc(
 							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) *
 								-1em
 						);
@@ -295,7 +295,7 @@ describe('Plugin', () => {
 					.capsize::before {
 						display: table;
 						content: '';
-						margin-bottom: calc(
+						margin-block-end: calc(
 							(
 									(var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) - var(
 											--line-height-offset
@@ -308,7 +308,7 @@ describe('Plugin', () => {
 					.capsize::after {
 						display: table;
 						content: '';
-						margin-top: calc(
+						margin-block-start: calc(
 							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) *
 								-1em
 						);
@@ -351,7 +351,7 @@ describe('Plugin', () => {
 					.capsize::before {
 						display: table;
 						content: "";
-						margin-bottom: calc(
+						margin-block-end: calc(
 							((var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) -
 								var(--line-height-offset)) * -1em
 						);
@@ -360,7 +360,7 @@ describe('Plugin', () => {
 					.capsize::after {
 						display: table;
 						content: "";
-						margin-top: calc(
+						margin-block-start: calc(
 							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) * -1em
 						);
 					}
@@ -408,7 +408,7 @@ describe('Plugin', () => {
 					.leading-trim::before {
 						display: table;
 						content: "";
-						margin-bottom: calc(
+						margin-block-end: calc(
 							((var(--ascent-scale) - var(--cap-height-scale) + var(--line-gap-scale) / 2) -
 								var(--line-height-offset)) * -1em
 						);
@@ -417,7 +417,7 @@ describe('Plugin', () => {
 					.leading-trim::after {
 						display: table;
 						content: "";
-						margin-top: calc(
+						margin-block-start: calc(
 							((var(--descent-scale) + var(--line-gap-scale) / 2) - var(--line-height-offset)) * -1em
 						);
 					}
@@ -450,7 +450,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-sm.capsize::before,
 					.text-sm .font-sans .leading-sm.capsize::before {
 						content: '';
-						margin-bottom: -0.3506em;
+						margin-block-end: -0.3506em;
 						display: table;
 					}
 
@@ -460,7 +460,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-sm.capsize::after,
 					.text-sm .font-sans .leading-sm.capsize::after {
 						content: '';
-						margin-top: -0.3506em;
+						margin-block-start: -0.3506em;
 						display: table;
 					}
 
@@ -470,7 +470,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.capsize::before,
 					.text-sm .font-sans .leading-md.capsize::before {
 						content: '';
-						margin-bottom: -1.0649em;
+						margin-block-end: -1.0649em;
 						display: table;
 					}
 
@@ -480,7 +480,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.capsize::after,
 					.text-sm .font-sans .leading-md.capsize::after {
 						content: '';
-						margin-top: -1.0649em;
+						margin-block-start: -1.0649em;
 						display: table;
 					}
 
@@ -490,7 +490,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-sm.capsize::before,
 					.text-md .font-sans .leading-sm.capsize::before {
 						content: '';
-						margin-bottom: -0.053em;
+						margin-block-end: -0.053em;
 						display: table;
 					}
 
@@ -500,7 +500,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-sm.capsize::after,
 					.text-md .font-sans .leading-sm.capsize::after {
 						content: '';
-						margin-top: -0.053em;
+						margin-block-start: -0.053em;
 						display: table;
 					}
 
@@ -510,7 +510,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-md.capsize::before,
 					.text-md .font-sans .leading-md.capsize::before {
 						content: '';
-						margin-bottom: -0.4697em;
+						margin-block-end: -0.4697em;
 						display: table;
 					}
 
@@ -520,7 +520,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-md.capsize::after,
 					.text-md .font-sans .leading-md.capsize::after {
 						content: '';
-						margin-top: -0.4697em;
+						margin-block-start: -0.4697em;
 						display: table;
 					}
 				`),
@@ -550,7 +550,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-sm.capsize::before,
 					.text-sm .font-sans .leading-sm.capsize::before {
 						content: '';
-						margin-bottom: -0.3506em;
+						margin-block-end: -0.3506em;
 						display: table;
 					}
 
@@ -560,7 +560,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-sm.capsize::after,
 					.text-sm .font-sans .leading-sm.capsize::after {
 						content: '';
-						margin-top: -0.3506em;
+						margin-block-start: -0.3506em;
 						display: table;
 					}
 
@@ -570,7 +570,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.capsize::before,
 					.text-sm .font-sans .leading-md.capsize::before {
 						content: '';
-						margin-bottom: -0.7078em;
+						margin-block-end: -0.7078em;
 						display: table;
 					}
 
@@ -580,7 +580,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.capsize::after,
 					.text-sm .font-sans .leading-md.capsize::after {
 						content: '';
-						margin-top: -0.7078em;
+						margin-block-start: -0.7078em;
 						display: table;
 					}
 
@@ -590,7 +590,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-sm.capsize::before,
 					.text-md .font-sans .leading-sm.capsize::before {
 						content: '';
-						margin-bottom: -0.1919em;
+						margin-block-end: -0.1919em;
 						display: table;
 					}
 
@@ -600,7 +600,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-sm.capsize::after,
 					.text-md .font-sans .leading-sm.capsize::after {
 						content: '';
-						margin-top: -0.1919em;
+						margin-block-start: -0.1919em;
 						display: table;
 					}
 
@@ -610,7 +610,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-md.capsize::before,
 					.text-md .font-sans .leading-md.capsize::before {
 						content: '';
-						margin-bottom: -0.4697em;
+						margin-block-end: -0.4697em;
 						display: table;
 					}
 
@@ -620,7 +620,7 @@ describe('Plugin', () => {
 					.text-md .font-sans.leading-md.capsize::after,
 					.text-md .font-sans .leading-md.capsize::after {
 						content: '';
-						margin-top: -0.4697em;
+						margin-block-start: -0.4697em;
 						display: table;
 					}
 				`),
@@ -649,7 +649,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-sm.capsize::before,
 					.text-sm .font-sans .leading-sm.capsize::before {
 						content: '';
-						margin-bottom: -0.1364em;
+						margin-block-end: -0.1364em;
 						display: table;
 					}
 
@@ -659,7 +659,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-sm.capsize::after,
 					.text-sm .font-sans .leading-sm.capsize::after {
 						content: '';
-						margin-top: -0.1364em;
+						margin-block-start: -0.1364em;
 						display: table;
 					}
 
@@ -669,7 +669,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.capsize::before,
 					.text-sm .font-sans .leading-md.capsize::before {
 						content: '';
-						margin-bottom: -0.3864em;
+						margin-block-end: -0.3864em;
 						display: table;
 					}
 
@@ -679,7 +679,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.capsize::after,
 					.text-sm .font-sans .leading-md.capsize::after {
 						content: '';
-						margin-top: -0.3864em;
+						margin-block-start: -0.3864em;
 						display: table;
 					}
 				`),
@@ -717,7 +717,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.leading-trim::before,
 					.text-sm .font-sans .leading-md.leading-trim::before {
 						content: '';
-						margin-bottom: -0.3864em;
+						margin-block-end: -0.3864em;
 						display: table;
 					}
 
@@ -727,7 +727,7 @@ describe('Plugin', () => {
 					.text-sm .font-sans.leading-md.leading-trim::after,
 					.text-sm .font-sans .leading-md.leading-trim::after {
 						content: '';
-						margin-top: -0.3864em;
+						margin-block-start: -0.3864em;
 						display: table;
 					}
 				`),
