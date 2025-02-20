@@ -1,7 +1,8 @@
 import path from 'node:path'
 
+import tailwind from '@tailwindcss/postcss'
 import postcss from 'postcss'
-import tailwind, { type Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss'
 import { expect } from 'vitest'
 
 export const css = (strings: string[] | ArrayLike<string>) => String.raw({ raw: strings })

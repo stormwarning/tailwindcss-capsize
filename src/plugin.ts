@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import { createStyleObject, type FontMetrics } from '@capsizecss/core'
-import plugin from 'tailwindcss/plugin'
+import createPlugin from 'tailwindcss/plugin'
 
 import {
 	isPlainObject,
@@ -10,7 +12,7 @@ import {
 	round,
 } from './utils.js'
 
-export interface PluginOptions {
+export interface CapsizePluginOptions {
 	/** The root font-size, in pixels */
 	rootSize?: number
 	/** Custom utility classname */
@@ -25,7 +27,7 @@ interface FontSizeOptions {
 	fontWeight?: string
 }
 
-export default plugin.withOptions<Partial<PluginOptions>>(
+const thisPlugin = createPlugin.withOptions<Partial<CapsizePluginOptions>>(
 	({ rootSize = 16, className = 'capsize', mode = 'modern' } = {}) => {
 		if (mode === 'classic') {
 			return function ({ addUtilities, theme }) {
@@ -60,9 +62,11 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 			}
 		}
 
-		return function ({ addUtilities, matchUtilities, e, theme }) {
+		return function ({ addUtilities, matchUtilities, prefix, theme }) {
 			let fontMetrics = theme('fontMetrics', {}) as Record<string, FontMetrics>
 			let fontFamily = (theme('fontFamily', {}) as Record<string, unknown>) ?? {}
+
+			console.log({ fontMetrics, fontFamily })
 
 			// Font-family
 			matchUtilities(
@@ -151,7 +155,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 			// Leading-trim
 			addUtilities(
 				{
-					[`.${e(className)}`]: {
+					[`.${prefix(className)}`]: {
 						'&::before': {
 							display: 'table',
 							content: '""',
@@ -174,11 +178,13 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 		if (mode === 'classic') return {}
 
 		return {
-			corePlugins: {
-				fontFamily: false,
-				fontSize: false,
-				lineHeight: false,
-			},
+			// CorePlugins: {
+			// 	fontFamily: false,
+			// 	fontSize: false,
+			// 	lineHeight: false,
+			// },
 		}
 	},
 )
+
+export default thisPlugin
