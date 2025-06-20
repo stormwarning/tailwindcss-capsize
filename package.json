@@ -44,10 +44,8 @@
 		"package.json": "prettier --write"
 	},
 	"prettier": "@zazen/prettier-config",
-	"dependencies": {
-		"@capsizecss/core": "^4.0.0"
-	},
 	"devDependencies": {
+		"@capsizecss/core": "4.1.2",
 		"@changesets/cli": "2.27.1",
 		"@tailwindcss/postcss": "4.1.10",
 		"@zazen/changesets-changelog": "2.0.3",

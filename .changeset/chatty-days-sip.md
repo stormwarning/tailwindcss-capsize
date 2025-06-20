@@ -8,4 +8,4 @@ v4 was a major change to how projects are configured as well as what plugins are
 
 v4 also allows configuration within CSS itself. However, this plugin relies on object values which aren't supported in CSS, so a JavaScript config file is still required. You can either use the JS file for all your settings, or just the settings for this plugin and configure the rest of your project in CSS.
 
-The `mode` option has also been removed.
+The `mode` option has also been removed. This also removes the dependency on `@capsizecss/core`.
