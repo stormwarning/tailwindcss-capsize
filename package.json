@@ -46,7 +46,7 @@
 	"prettier": "@zazen/prettier-config",
 	"devDependencies": {
 		"@capsizecss/core": "4.1.2",
-		"@changesets/cli": "2.27.1",
+		"@changesets/cli": "2.29.5",
 		"@tailwindcss/postcss": "4.1.10",
 		"@zazen/changesets-changelog": "2.0.3",
 		"@zazen/eslint-config": "6.10.0",
