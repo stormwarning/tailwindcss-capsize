@@ -24,7 +24,9 @@ interface FontSizeOptions {
 	fontWeight?: string
 }
 
-const thisPlugin = createPlugin.withOptions<Partial<CapsizePluginOptions>>(
+type PluginType = ReturnType<typeof createPlugin.withOptions<CapsizePluginOptions>>
+
+const thisPlugin: PluginType = createPlugin.withOptions<CapsizePluginOptions>(
 	({ rootSize = 16, className = 'capsize' } = {}) =>
 		function ({ addUtilities, matchUtilities, prefix, theme }) {
 			let fontMetrics = theme('fontMetrics', {}) as Record<string, FontMetrics>

@@ -3,7 +3,7 @@
 	"compilerOptions": {
 		"module": "node16",
 		"moduleResolution": "node16",
-		"declaration": false,
+		"declaration": true,
 		"declarationMap": false
 	},
 	"include": ["src"]
