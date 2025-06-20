@@ -1,22 +1,21 @@
-import { createStyleObject, type FontMetrics } from '@capsizecss/core'
-import plugin from 'tailwindcss/plugin'
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+import type { FontMetrics } from '@capsizecss/core'
+import createPlugin from 'tailwindcss/plugin'
 
 import {
 	isPlainObject,
 	lineHeightProperties,
-	makeCssSelectors,
 	normalizeThemeValue,
 	normalizeValue,
 	round,
 } from './utils.js'
 
-export interface PluginOptions {
-	/** The root font-size, in pixels */
+export interface CapsizePluginOptions {
+	/** The root font-size, in pixels. */
 	rootSize?: number
-	/** Custom utility classname */
+	/** Custom utility classname. */
 	className?: string
-	/** CSS Output strategy */
-	mode?: 'modern' | 'classic'
 }
 
 interface FontSizeOptions {
@@ -25,42 +24,11 @@ interface FontSizeOptions {
 	fontWeight?: string
 }
 
-export default plugin.withOptions<Partial<PluginOptions>>(
-	({ rootSize = 16, className = 'capsize', mode = 'modern' } = {}) => {
-		if (mode === 'classic') {
-			return function ({ addUtilities, theme }) {
-				let fontMetrics = theme('fontMetrics', {}) as Record<string, FontMetrics>
-				let lineHeight = theme('lineHeight', {}) as Record<string, string>
-				let fontSize = theme('fontSize', {}) as Record<string, string>
-				let utilities = {}
+type PluginType = ReturnType<typeof createPlugin.withOptions<CapsizePluginOptions>>
 
-				for (let fontFamily of Object.keys(fontMetrics)) {
-					let fontConfig = fontMetrics[fontFamily]
-
-					for (let sizeName of Object.keys(fontSize)) {
-						for (let leading of Object.keys(lineHeight)) {
-							let fs = normalizeValue(fontSize[sizeName], rootSize)
-							let lh = normalizeValue(lineHeight[leading], rootSize, fs)
-
-							let { '::after': after, '::before': before } = createStyleObject({
-								fontMetrics: fontConfig,
-								fontSize: fs,
-								leading: lh,
-							})
-
-							utilities[makeCssSelectors(fontFamily, sizeName, leading, className)] = {
-								'&::before': before,
-								'&::after': after,
-							}
-						}
-					}
-				}
-
-				addUtilities(utilities, {})
-			}
-		}
-
-		return function ({ addUtilities, matchUtilities, e, theme }) {
+const thisPlugin: PluginType = createPlugin.withOptions<CapsizePluginOptions>(
+	({ rootSize = 16, className = 'capsize' } = {}) =>
+		function ({ addUtilities, matchUtilities, prefix, theme }) {
 			let fontMetrics = theme('fontMetrics', {}) as Record<string, FontMetrics>
 			let fontFamily = (theme('fontFamily', {}) as Record<string, unknown>) ?? {}
 
@@ -75,7 +43,6 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 						}
 
 						let family = normalizeThemeValue('fontFamily', value)
-
 						let familyKey = Object.keys(fontFamily).find((key) => fontFamily[key] === value)
 
 						if (familyKey === undefined) return fallback(family)
@@ -97,7 +64,6 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 							'--cap-height-scale': round(capHeightScale),
 							'--line-gap-scale': round(lineGapScale),
 							'--line-height-scale': round(lineHeightScale),
-							'font-family': family,
 						}
 					},
 				},
@@ -114,16 +80,13 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 					text(value: string | [string, string | FontSizeOptions]) {
 						let [fontSize, options] = Array.isArray(value) ? value : [value]
 						let fontSizeActual = normalizeValue(fontSize, rootSize)
-						let { lineHeight, letterSpacing, fontWeight } = (
+						let { lineHeight } = (
 							isPlainObject(options) ? options : { lineHeight: options }
 						) as FontSizeOptions
 
 						return {
 							'--font-size-px': String(fontSizeActual),
-							'font-size': fontSize,
 							...lineHeightProperties(lineHeight, rootSize),
-							...(letterSpacing === undefined ? {} : { 'letter-spacing': letterSpacing }),
-							...(fontWeight === undefined ? {} : { 'font-weight': fontWeight }),
 						}
 					},
 				},
@@ -151,7 +114,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 			// Leading-trim
 			addUtilities(
 				{
-					[`.${e(className)}`]: {
+					[`.${prefix(className)}`]: {
 						'&::before': {
 							display: 'table',
 							content: '""',
@@ -168,17 +131,7 @@ export default plugin.withOptions<Partial<PluginOptions>>(
 				},
 				{},
 			)
-		}
-	},
-	({ mode = 'modern' } = {}) => {
-		if (mode === 'classic') return {}
-
-		return {
-			corePlugins: {
-				fontFamily: false,
-				fontSize: false,
-				lineHeight: false,
-			},
-		}
-	},
+		},
 )
+
+export default thisPlugin
