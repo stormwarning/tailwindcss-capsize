@@ -49,7 +49,7 @@
 		"@changesets/cli": "2.29.5",
 		"@tailwindcss/postcss": "4.1.10",
 		"@zazen/changesets-changelog": "2.0.3",
-		"@zazen/eslint-config": "6.10.0",
+		"@zazen/eslint-config": "7.2.0",
 		"@zazen/prettier-config": "1.1.3",
 		"eslint": "8.57.1",
 		"husky": "4.3.x",
