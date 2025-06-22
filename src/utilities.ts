@@ -46,7 +46,7 @@ export function isPlainObject(value: unknown) {
 	return prototype === null || prototype === Object.prototype
 }
 
-type ThemeValue = string | string[] | ((p?: any) => string)
+type ThemeValue = string | string[] | ((p?: unknown) => string)
 
 /**
  * Returns a value based on the core theme section.  Adapted from Tailwind
@@ -87,8 +87,8 @@ export function lineHeightProperties(lineHeight?: string, rootSize = 16) {
 	if (lineHeight === undefined) return {}
 
 	let lineHeightActual = isRelativeValue(lineHeight)
-		? `calc(${getRelativeValue(lineHeight)} * var(--font-size-px))`
-		: normalizeValue(lineHeight, rootSize)
+		? `calc(${getRelativeValue(lineHeight).toString()} * var(--font-size-px))`
+		: normalizeValue(lineHeight, rootSize).toString()
 
 	return {
 		'--line-height-offset': `calc((((var(--line-height-scale) * var(--font-size-px)) - ${lineHeightActual}) / 2) / var(--font-size-px))`,

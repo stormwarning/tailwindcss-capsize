@@ -5,8 +5,7 @@ import path from 'node:path'
 
 import { describe, expect, it } from 'vitest'
 
-import capsizePlugin from '../src/index.js'
-import { css, html, run } from './run.js'
+import { css, run } from './run.js'
 
 // eslint-disable-next-line unicorn/prefer-module
 const CONFIG_PATH = path.resolve(__dirname, './tailwind.config.js')

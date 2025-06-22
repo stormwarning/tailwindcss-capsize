@@ -4,26 +4,25 @@
  */
 
 import { diff } from 'jest-diff'
-// eslint-disable-next-line import/default
 import prettier from 'prettier'
 import { expect } from 'vitest'
 
+async function format(input: string) {
+	return prettier.format(input.replaceAll('\n', ''), {
+		parser: 'css',
+		printWidth: 120,
+	})
+}
+
+function stripped(value: string) {
+	return value
+		.replace(/\/\*! tailwindcss .* \*\//, '')
+		.replaceAll(/\s/g, '')
+		.replaceAll(';', '')
+}
+
 expect.extend({
 	async toMatchFormattedCss(received: string, argument: string) {
-		async function format(input: string) {
-			return prettier.format(input.replaceAll('\n', ''), {
-				parser: 'css',
-				printWidth: 100,
-			})
-		}
-
-		function stripped(value: string) {
-			return value
-				.replace(/\/\* ! tailwindcss .* \*\//, '')
-				.replaceAll(/\s/g, '')
-				.replaceAll(';', '')
-		}
-
 		let options = {
 			comment: 'stripped(received) === stripped(argument)',
 			isNot: this.isNot,
