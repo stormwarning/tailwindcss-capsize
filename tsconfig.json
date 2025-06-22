@@ -9,6 +9,7 @@
 		"typeRoots": ["./types"],
 
 		// Emit
+		"noEmit": true,
 		"outDir": "dist",
 
 		// JavaScript Support
@@ -30,6 +31,6 @@
 		// Completeness
 		"skipLibCheck": true
 	},
-	"include": ["__tests__", "src", "types", ".eslintrc.cjs", "*.config.js"],
+	"include": ["__tests__", "src", "types", "*.config.js", "eslint.config.mjs"],
 	"exclude": ["node_modules", "dist"]
 }

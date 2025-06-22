@@ -9,39 +9,40 @@ import {
 	normalizeThemeValue,
 	normalizeValue,
 	round,
-} from './utils.js'
+} from './utilities.js'
 
 export interface CapsizePluginOptions {
-	/** The root font-size, in pixels. */
-	rootSize?: number
 	/** Custom utility classname. */
 	className?: string
+	/** The root font-size, in pixels. */
+	rootSize?: number
 }
 
 interface FontSizeOptions {
-	lineHeight?: string
-	letterSpacing?: string
 	fontWeight?: string
+	letterSpacing?: string
+	lineHeight?: string
 }
 
 type PluginType = ReturnType<typeof createPlugin.withOptions<CapsizePluginOptions>>
 
+function fallback(family: string | string[]) {
+	return {
+		'font-family': family,
+	}
+}
+
 const thisPlugin: PluginType = createPlugin.withOptions<CapsizePluginOptions>(
 	({ rootSize = 16, className = 'capsize' } = {}) =>
-		function ({ addUtilities, matchUtilities, prefix, theme }) {
+		// eslint-disable-next-line @typescript-eslint/unbound-method
+		({ addUtilities, matchUtilities, prefix, theme }) => {
 			let fontMetrics = theme('fontMetrics', {}) as Record<string, FontMetrics>
-			let fontFamily = (theme('fontFamily', {}) as Record<string, unknown>) ?? {}
+			let fontFamily = theme('fontFamily', {}) as Record<string, unknown>
 
 			// Font-family
 			matchUtilities(
 				{
 					font(value: string | string[]) {
-						function fallback(family: string | string[]) {
-							return {
-								'font-family': family,
-							}
-						}
-
 						let family = normalizeThemeValue('fontFamily', value)
 						let familyKey = Object.keys(fontFamily).find((key) => fontFamily[key] === value)
 
@@ -49,7 +50,7 @@ const thisPlugin: PluginType = createPlugin.withOptions<CapsizePluginOptions>(
 
 						let metrics = fontMetrics[familyKey]
 
-						if (metrics === undefined) return fallback(family)
+						if (!(familyKey in fontMetrics)) return fallback(family)
 
 						let { ascent, descent, lineGap, unitsPerEm, capHeight } = metrics
 						let ascentScale = ascent / unitsPerEm
