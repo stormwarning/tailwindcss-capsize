@@ -1,13 +1,17 @@
-type FontSizeValue = [string, Record<'lineHeight', string>]
+type FontSizeValue = string | number | [string | number, Record<'lineHeight', string | number>]
 
-export function isRelativeValue(value: string) {
+export function isRelativeValue(value: string | number) {
+	value = String(value)
+
 	let isPercentValue = value.endsWith('%')
 	let isUnitlessValue = /\d$/.test(value)
 
 	return isPercentValue || isUnitlessValue
 }
 
-export function getRelativeValue(value: string) {
+export function getRelativeValue(value: string | number) {
+	value = String(value)
+
 	let isPercentValue = value.endsWith('%')
 
 	return isPercentValue
@@ -15,15 +19,11 @@ export function getRelativeValue(value: string) {
 		: Number.parseFloat(value)
 }
 
-export function normalizeValue(value: string | FontSizeValue, root: number, fs?: number): number {
-	value = Array.isArray(value) ? value[0] : value
+export function normalizeValue(value: FontSizeValue, root: number): number {
+	value = Array.isArray(value) ? String(value[0]) : String(value)
 
 	if (value.endsWith('px')) return Number.parseFloat(value.replace('px', ''))
 	if (value.endsWith('rem')) return root * Number.parseFloat(value.replace('rem', ''))
-
-	if (isRelativeValue(value) && fs !== undefined) {
-		return fs * getRelativeValue(value)
-	}
 
 	return Number.parseInt(value, 10)
 }

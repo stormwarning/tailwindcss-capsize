@@ -328,7 +328,7 @@ describe('Plugin', () => {
 					},
 					lineHeight: {
 						sm: '100%',
-						md: '1.5',
+						md: 1.5,
 					},
 				},
 			}).then((result) =>
