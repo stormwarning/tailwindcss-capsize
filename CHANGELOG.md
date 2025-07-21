@@ -1,5 +1,15 @@
 # Change Log
 
+## 4.0.1
+
+### Patch Changes
+
+- Handle `number` theme values ([#261](https://github.com/stormwarning/tailwindcss-capsize/pull/261))
+
+  Internal utilities assumed theme values would always be `string` typed, but in some cases they may be `number`s.
+
+- Handle anomalous values from Tailwind language server ([#263](https://github.com/stormwarning/tailwindcss-capsize/pull/263))
+
 ## 4.0.0
 
 ### Major Changes
@@ -67,7 +77,7 @@
 - Allow custom activation class via new `className` option [#103](https://github.com/stormwarning/tailwindcss-capsize/pull/103)
 
   ```js
-  require("tailwindcss-capsize")({ className: "leading-trim" });
+  require('tailwindcss-capsize')({ className: 'leading-trim' })
   ```
 
 ## 2.0.0 — 2021-09-21
