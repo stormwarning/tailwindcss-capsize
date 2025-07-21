@@ -77,8 +77,14 @@ const thisPlugin: PluginType = createPlugin.withOptions<CapsizePluginOptions>(
 			// Font-size
 			matchUtilities(
 				{
-					// @ts-expect-error -- Extra custom properties mismatches base type.
 					text(value: string | [string, string | FontSizeOptions]) {
+						/**
+						 * For some reason, tailwindcss-intellisense passes
+						 * object and undefined values in here, so we handle
+						 * those cases so it doesn't break IDE plugins.
+						 */
+						if (!value || isPlainObject(value)) return {}
+
 						let [fontSize, options] = Array.isArray(value) ? value : [value]
 						let fontSizeActual = normalizeValue(fontSize, rootSize)
 						let { lineHeight } = (
@@ -87,7 +93,7 @@ const thisPlugin: PluginType = createPlugin.withOptions<CapsizePluginOptions>(
 
 						return {
 							'--font-size-px': String(fontSizeActual),
-							...lineHeightProperties(lineHeight, rootSize),
+							...(lineHeight ? lineHeightProperties(lineHeight, rootSize) : {}),
 						}
 					},
 				},
@@ -100,11 +106,10 @@ const thisPlugin: PluginType = createPlugin.withOptions<CapsizePluginOptions>(
 			// Line-height
 			matchUtilities(
 				{
-					// @ts-expect-error -- Extra custom properties mismatches base type.
 					leading(value: string | string[]) {
 						let lineHeight = normalizeThemeValue('lineHeight', value) as string
 
-						return lineHeightProperties(lineHeight, rootSize)
+						return lineHeight ? lineHeightProperties(lineHeight, rootSize) : {}
 					},
 				},
 				{
