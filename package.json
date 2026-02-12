@@ -50,7 +50,7 @@
 		"@tailwindcss/postcss": "4.1.18",
 		"@zazen/changesets-changelog": "2.0.3",
 		"@zazen/eslint-config": "7.2.0",
-		"@zazen/prettier-config": "1.1.3",
+		"@zazen/prettier-config": "1.1.4",
 		"eslint": "9.39.2",
 		"husky": "4.3.x",
 		"jest-diff": "29.7.0",
