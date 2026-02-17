@@ -45,7 +45,7 @@
 	},
 	"prettier": "@zazen/prettier-config",
 	"devDependencies": {
-		"@capsizecss/core": "4.1.2",
+		"@capsizecss/core": "4.1.3",
 		"@changesets/cli": "2.29.8",
 		"@tailwindcss/postcss": "4.1.18",
 		"@zazen/changesets-changelog": "2.0.3",
